@@ -72,6 +72,9 @@ Pada pemodelan ini nantinya akan dilakukan tuning untuk mendapat akurasi yang le
 3. Boosting Algorithm
    Nilai MSE train dan test sangat tinggi, hal ini  mungkin dikarenakan model kurang belajar dengan baik (underfitting). Dan dari prediksi dengan nilai aktual model ini juga overestimate.
 
+Berikut visualisasi metrik evaluasi dari ketiga model:
+<img src="plot.png" width="500"/>
+
 Dari ketiga model tersebut masih buruk dalam memprediksi, oleh karena itu dilakukan tuning untuk mendapatkan model yang lebih baik.
 
 Evaluasi setelah tuning:
@@ -81,6 +84,11 @@ Evaluasi setelah tuning:
    Memiliki performa terbaik secara keseluruhan karena tidak overfit, nilai MSE dan MAE paling rendah di test set sehingga prediksi paling akurat dan stabil di antara ketiga model. Untuk nilai prediksinya masih cukup jauh dengan nilai aktual.
 3. Boosting Algorithm
    Menunjukkan performa terburuk karena  model tidak cukup baik menjelaskan variasi target serta nilai MSE dan MAE tertinggi. Untuk nilai prediksinya masih cukup jauh dengan nilai aktual.
+
+Berikut visualisasi evaluasi dari metrik evaluasi ketiga model
+<img src="mse_plot.png" width="500"/>
+<img src="r2_plot.png" width="500"/>
+<img src="mae_plot.png" width="500"/>
 
 Dari evaluasi ketiga metode tersebut jika hanya melihat 1 data point mungkin KNN lebih baik, namun jika mempertimbangkan performa keseluruhan model Random Forest lebih baik karena R² tertinggi (akurasi global terbaik), MAE dan MSE terendah pada test set, dan stabil di train-test atau tidak overfit. Oleh karen itu dapat disimpulkan bahwa random forest adalah model terbaik untuk memprediksi harga tiket pesawat.
 
