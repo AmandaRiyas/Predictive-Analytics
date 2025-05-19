@@ -42,15 +42,17 @@ Data preparation sangat penting dilakukan sebelum membuat pemodelan karena untuk
 3. Exploratory Data Analysis - Univariate Analysis
    Mengelompokkan categirical_features yang terdiri dari variabel Airline, Source, Destination, Total_Stops, Day_of_Week, Is_Weekend dan numerical_featues yang terdiri dari variabel Dep_hours, Dep_min, Arrival_hours, Arrival_min, Duration_hours, Duration_min untuk mempermudah dalam penganalisisan data nantinya. Kemudian dibuat visualisasi data berupa diagram batang dari categirical_features yang terdapat informasi jumlah sampel dan persentase. Pada numerical_featues juga dibuat visualisasi menggunakan diagram batang dan boxplot numerical_featues terhadap price.
 4.  Exploratory Data Analysis - Multivariate Analysis
-   Pada tahap ini dilakukan pembuatan visualisasi untuk mengetahui pengaruh variabel-variabel dalam categirical_features dengan price dan untuk variabel-variabel numerical_featues dibuat matriks korelasi untuk mengetahui korelasi dari setiap variabel. Dari matriks korelasi, diperoleh korelasi terkuat pada variabel Duration_hours dengan Price.
-5. Encoding Fitur Kategori
+   Pada tahap ini dilakukan pembuatan visualisasi untuk mengetahui pengaruh variabel-variabel dalam categirical_features dengan price dan untuk variabel-variabel numerical_featues dibuat matriks korelasi untuk mengetahui korelasi dari setiap variabel.
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/correlation_matrix.png" width="500"/>
+Dari matriks korelasi, diperoleh korelasi terkuat pada variabel Duration_hours dengan Price.
+6. Encoding Fitur Kategori
    Karena terdapat beberapa variabel kategori maka diperlukan adanya encoding untuk merubah data kategorik ke data numerik.
-6. Train-Test-Split
+7. Train-Test-Split
    Membagi data menjadi data train dan test. Dari output diperoleh:
    - total of sample in whole dataset: 9487
    - total of sample in train dataset: 8538
    - total of sample in test dataset: 949
-7. Standarisasi
+8. Standarisasi
    Standarisasi sangat penting untuk menyamakan skala fitur yang ada. 
 
 ## Modeling
