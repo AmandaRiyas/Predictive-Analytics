@@ -86,8 +86,7 @@ Evaluasi setelah tuning:
    Menunjukkan performa terburuk karena  model tidak cukup baik menjelaskan variasi target serta nilai MSE dan MAE tertinggi. Untuk nilai prediksinya masih cukup jauh dengan nilai aktual.
 
 Berikut visualisasi evaluasi dari metrik evaluasi ketiga model
-<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/mse_plot.png
-" width="500"/>
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/mse_plot.png" width="500"/>
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/r2_plot.png" width="500"/>
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/mae_plot.png" width="500"/>
 
