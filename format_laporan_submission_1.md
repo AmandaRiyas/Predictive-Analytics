@@ -38,33 +38,52 @@ Data preparation sangat penting dilakukan sebelum membuat pemodelan karena untuk
 1. Exploratory Data Analysis - Deskripsi Variabel
    Pada tahap ini dilakukan pengecekan jumlah data dan variabel. Terdapat 10683 data dengan 14 variabel yang memiliki tipe object dan integer. Kemudian cek apakah ada data kosong dan diperoleh tidak ada data yang kosong. Setelah itu dilakukan pengecekan data yang duplikat dan diperoleh ada 222 data duplikat. Terakhir cek missing value dan diperoleh terdapat missing value pada variabel Duration_min karena tidak mungkin suatu penerbangan berdurasi 0, kemudian pada variabel duration_hours juga terdapat missing value karena terdapat durasi penerbangan yang sangat lama hingga lebih dari 24 jam padahal ada aturan lama penerbangan hanya sampai 24 jam. Dan pada variabel Duration_Stop juga ada missing value karena ada pemberhentian yang lebih dari 2 kali padahal pemberhentian penerbangan hanya diperbolehkan maksimal 2 kali. 
 2. Exploratory Data Analysis - Menangani Missing Value dan Outliers
-   Karena terdapat beberapa permasalahan pada data maka yang pertama dilakukan penghapusan data duplikat, dan setelah di hapus terdapat sisa data 10461 data. Kemudian dilakukan penghapusan data pada duration_hours yang melebihi 24 jam dan penghapusan data pada Total_Stop yang melebihi 2 kali pemberhentian. Setelah itu karena variabel date, month, dan year terpisah, sebaiknya digabungkan menjadi variabel Date_of_Journey untuk mempermudah proses analisis dan dilakukan penghapusan variabel date, month, year karena sudah digabungkan. Setelah dilakukan penggabungan dilakukan pembuatan fitur turunan untuk mengetahui apakah tanggal tersebut merupakan hari apa dengan dikategorikan menjadi angka 0-6 yang diberi nama Day_of_Week dan kategori 0 atau 1 untuk mengetahui apakah hari tersebut weekend atau tidak dengan variabel Is_weekend. Tipe data Total_Stops, Day_of Week, dan Is_Weekend diubah menjadi kategori karena nilai ini merepresentasikan suatu kata.
+   Karena terdapat beberapa permasalahan pada data maka yang pertama dilakukan penghapusan data duplikat, dan setelah di hapus terdapat sisa data 10461 data. Kemudian dilakukan penghapusan data pada duration_hours yang melebihi 24 jam dan penghapusan data pada Total_Stop yang melebihi 2 kali pemberhentian. Setelah itu karena variabel date, month, dan year terpisah, sebaiknya digabungkan menjadi variabel Date_of_Journey untuk mempermudah proses analisis dan dilakukan penghapusan variabel date, month, year karena sudah digabungkan. Setelah dilakukan penggabungan dilakukan pembuatan fitur turunan untuk mengetahui apakah tanggal tersebut merupakan hari apa dengan dikategorikan menjadi angka 0-6 yang diberi nama Day_of_Week dan kategori 0 atau 1 untuk mengetahui apakah hari tersebut weekend atau tidak dengan variabel Is_weekend. Langkah selanjutnya menghapus Duration_hours yang isinya 0 karena tidak mungkin waktu penerbangan 0. Setelah itu dilakukan pengecekan menggunakan boxplot agar terlihat jelas appakah terdapat outlier atau tidak, dari pengecekan terdapat outlier, untuk penanganannya menggunakan IQR kemudian dilakukan penghapusan dari data yang di luar IQR. Tipe data Total_Stops, Day_of Week, dan Is_Weekend diubah menjadi kategori karena nilai ini merepresentasikan suatu kata. 
 3. Exploratory Data Analysis - Univariate Analysis
    Mengelompokkan categirical_features yang terdiri dari variabel Airline, Source, Destination, Total_Stops, Day_of_Week, Is_Weekend dan numerical_featues yang terdiri dari variabel Dep_hours, Dep_min, Arrival_hours, Arrival_min, Duration_hours, Duration_min untuk mempermudah dalam penganalisisan data nantinya. Kemudian dibuat visualisasi data berupa diagram batang dari categirical_features yang terdapat informasi jumlah sampel dan persentase. Pada numerical_featues juga dibuat visualisasi menggunakan diagram batang dan boxplot numerical_featues terhadap price.
 4.  Exploratory Data Analysis - Multivariate Analysis
    Pada tahap ini dilakukan pembuatan visualisasi untuk mengetahui pengaruh variabel-variabel dalam categirical_features dengan price dan untuk variabel-variabel numerical_featues dibuat matriks korelasi untuk mengetahui korelasi dari setiap variabel. Dari matriks korelasi, diperoleh korelasi terkuat pada variabel Duration_hours dengan Price.
+5. Encoding Fitur Kategori
+   Karena terdapat beberapa variabel kategori maka diperlukan adanya encoding untuk merubah data kategorik ke data numerik.
+6. Train-Test-Split
+   Membagi data menjadi data train dan test. Dari output diperoleh:
+   - total of sample in whole dataset: 9487
+   - total of sample in train dataset: 8538
+   - total of sample in test dataset: 949
+7. Standarisasi
+   Standarisasi sangat penting untuk menyamakan skala fitur yang ada. 
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
+Ada 3 model yang dicoba untuk memprediksi harga tiket pesawat yaitu:
+1. K-Nearest Neighbor
+   K-Nearest Neighbor atau yang biasa disebut dengan KNN menggunakan algoritma‘kesamaan fitur’ untuk memprediksi nilai dari setiap data yang baru. Dengan kata lain, setiap data baru diberi nilai berdasarkan seberapa mirip titik tersebut dalam set pelatihan. KNN bekerja dengan membandingkan jarak satu sampel ke sampel pelatihan lain dengan memilih sejumlah k tetangga terdekat (dengan k adalah sebuah angka positif). Meskipun algoritma KNN mudah dipahami dan digunakan, ia memiliki kekurangan jika dihadapkan pada jumlah fitur atau dimensi yang besar. Permasalahan ini sering disebut sebagai curse of dimensionality (kutukan dimensi). Pada dasarnya, permasalahan ini muncul ketika jumlah sampel meningkat secara eksponensial seiring dengan jumlah dimensi (fitur) pada data.
+2. Random Forest
+   Random forest merupakan salah satu model machine learning yang termasuk ke dalam kategori ensemble (group) learning. Pada model ensemble, setiap model harus membuat prediksi secara independen. Kemudian, prediksi dari setiap model ensemble ini digabungkan untuk membuat prediksi akhir. Namun model ini kurang baik untuk data yang sangat spars (jarang) atau high-dimensional, kurang interpretatif, lambat untuk prediksi, dan cenderung overfit pada data kecil
+3. Boosting Algorithm
+   Boosting Algorith bertujuan untuk meningkatkan performa atau akurasi prediksi dengan menggabungkan beberapa model sederhana dan dianggap lemah (weak learners) sehingga membentuk suatu model yang kuat (strong ensemble learner). Algoritma ini sangat powerful dalam meningkatkan akurasi prediksi. Algoritma boosting sering mengungguli model yang lebih sederhana seperti logistic regression dan random forest. Namun model ini memiliki kelemahan yaitu lambat dalam pelatihan, sangat sensitif terhadap outlier, butuh banyak tuning, sulit diinterpretasikan, dan membutuhkan memori yang cukup besar.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
+Pada pemodelan ini nantinya akan dilakukan tuning untuk mendapat akurasi yang lebih baik dan natinya juga akan dipilih salah satu model yang paling baik dalam memprediksi harga tiket pesawat.
 
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
+1. Model KNN
+   Dari evaluasi model diperoleh hasil pembagian train dan test cukup stabil namun nilai MSE relatif tinggi. Dari prediksi diperoleh hasil bahwa model KNN meng-overestimate nilai aktual sebesar ~4.1 ribu, kesalahan masih besar, tetapi lebih kecil dibanding Random forest dan boosting algorithm.
+2. Model Random Forest
+   Nilai MSE train dan test paling rendah diantara model yang lain. Namun dari prediksi dengan kenyataan model ini sangat jauh dari nilai aktual dibandingkan model KNN dan boosting algorithm.
+3. Boosting Algorithm
+   Nilai MSE train dan test sangat tinggi, hal ini  mungkin dikarenakan model kurang belajar dengan baik (underfitting). Dan dari prediksi dengan nilai aktual model ini juga overestimate.
 
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
-- Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
+Dari ketiga model tersebut masih buruk dalam memprediksi, oleh karena itu dilakukan tuning untuk mendapatkan model yang lebih baik.
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+Evaluasi setelah tuning:
+1. K-Nearest Neighbor
+   Model KNN cukup baik dalam mempelajari data training (R² > 0.7), performanya cukup stabil saat diuji di data test. Nilai MSE dan MAE menunjukkan kesalahan prediksi yang moderat. Tidak terjadi overfitting yang besar, meskipun ada penurunan performa dari train ke test. KNN juga memberikan prediksi paling dekat dengan nilai aktual pada sampel ini.
+2. Random Forest
+   Memiliki performa terbaik secara keseluruhan karena tidak overfit, nilai MSE dan MAE paling rendah di test set sehingga prediksi paling akurat dan stabil di antara ketiga model. Untuk nilai prediksinya masih cukup jauh dengan nilai aktual.
+3. Boosting Algorithm
+   Menunjukkan performa terburuk karena  model tidak cukup baik menjelaskan variasi target serta nilai MSE dan MAE tertinggi. Untuk nilai prediksinya masih cukup jauh dengan nilai aktual.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+Dari evaluasi ketiga metode tersebut jika hanya melihat 1 data point mungkin KNN lebih baik, namun jika mempertimbangkan performa keseluruhan model Random Forest lebih baik karena R² tertinggi (akurasi global terbaik), MAE dan MSE terendah pada test set, dan stabil di train-test atau tidak overfit. Oleh karen itu dapat disimpulkan bahwa random forest adalah model terbaik untuk memprediksi harga tiket pesawat.
 
-**---Ini adalah bagian akhir laporan---**
 
 _Catatan:_
 - _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
