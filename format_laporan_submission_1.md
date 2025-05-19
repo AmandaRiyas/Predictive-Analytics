@@ -86,9 +86,8 @@ Evaluasi setelah tuning:
    Menunjukkan performa terburuk karena  model tidak cukup baik menjelaskan variasi target serta nilai MSE dan MAE tertinggi. Untuk nilai prediksinya masih cukup jauh dengan nilai aktual.
 
 Berikut visualisasi evaluasi dari metrik evaluasi ketiga model
-<img src="mse_plot.png" width="500"/>
-<img src="r2_plot.png" width="500"/>
-<img src="mae_plot.png" width="500"/>
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/mse_plot.png
+" width="500"/>
 
 Dari evaluasi ketiga metode tersebut jika hanya melihat 1 data point mungkin KNN lebih baik, namun jika mempertimbangkan performa keseluruhan model Random Forest lebih baik karena R² tertinggi (akurasi global terbaik), MAE dan MSE terendah pada test set, dan stabil di train-test atau tidak overfit. Oleh karen itu dapat disimpulkan bahwa random forest adalah model terbaik untuk memprediksi harga tiket pesawat.
 
