@@ -73,7 +73,7 @@ Pada pemodelan ini nantinya akan dilakukan tuning untuk mendapat akurasi yang le
    Nilai MSE train dan test sangat tinggi, hal ini  mungkin dikarenakan model kurang belajar dengan baik (underfitting). Dan dari prediksi dengan nilai aktual model ini juga overestimate.
 
 Berikut visualisasi metrik evaluasi dari ketiga model:
-<img src="plot.png" width="500"/>
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/plot_evaluasimetrik1.png" width="500"/>
 
 Dari ketiga model tersebut masih buruk dalam memprediksi, oleh karena itu dilakukan tuning untuk mendapatkan model yang lebih baik.
 
