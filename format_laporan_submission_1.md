@@ -15,8 +15,13 @@ Dalam bisnis tentu saja akan berusaha semaksimal mungkin untuk mendapat profit t
 Berapa harga pasar tiket pesawat dengan dipengaruhi beberapa variabel penentu?
 
 ### Goals
+- Mengetahui variabel yang paling berkorelasi dengan harga tiket pesawat
+- Memprediksi harga tiket pesawat
 
-Mengetahui fitur yang paling berkorelasi dengan harga tiket pesawat dan membuat model machine learning yang dapat memprediksi harga tiket pesawat seakurat mungkin berdasarkan kriteria yang ada. Solusi dari permasalahan ini dapat diselesaikan menggunakan regresi dengan menguji beberapa pemodelan seperti KNN, Random Forest, dan Boosting Algorithm untuk mencari tahu model terbaik mana yang cocok digunakan untuk memprediksi harga tiket pesawat, nantinya juga akan dilakukan tuning untuk mendapatkan prediksi yang lebih baik. Metrik digunakan untuk mengevaluasi seberapa baik model dalam memprediksi harga. Metrik yang digunakan adalah Mean Squared Error (MSE) atau Root Mean Square Error (RMSE) untuk mengukur seberapa jauh hasil prediksi dengan nilai yang sebenarnya pada bagian model evaluasi.
+## Solution Statements
+- Mengunakan regresi dalam pemecahan masalah
+- Menerapkan beberapa pemodelan K-Nearest Neighbor, Random Forest, dan Boosting Algorithm untuk mencari tahu model terbaiknya
+- Menggunakan metrik evaluasi Mean Squared Error (MSE) atau Root Mean Square Error (RMSE)
 
 ## Data Understanding
 Data pada proyek ini berasal dari kaggle yang berjudul Flight Price Prediction dengan link https://www.kaggle.com/datasets/viveksharmar/flight-price-data 
@@ -27,9 +32,13 @@ Data pada proyek ini berasal dari kaggle yang berjudul Flight Price Prediction d
 - Destination: Kota tempat mendarat.
 - Total Stops: Jumlah pemberhentian yang dilakukan oleh penerbangan.
 - Price: Harga tiket untuk masing-masing penerbangan.
-- Date, Month, and Year: Tanggal tertentu dimana penerbangan dijadwalkan.
-- Departure and Arrival Times: Jam dan menit terperinci untuk keberangkatan dan kedatangan.
-- Duration: Total durasi penerbangan dalam jam dan menit.
+- Date : Tanggal dimana penerbangan dijadwalkan.
+- Month : Bulan dimanapenerbangan dijadwalkan
+- Year: Tahun dimana penerbangan dijadwalkan.
+- Dep_hours : Jam keberangkatan pesawat.
+- Dep_min : Menit pada jam keberangkatan pesawat.
+- Duration_hours : Durasi penerbangan dalam jam.
+- Duration_min : Durasi penerbangan dalam menit
 
 Untuk memahami seperti apa data yang ada dilakukan visualisasi menggunakan diagram batang.
 
