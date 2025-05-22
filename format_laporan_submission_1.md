@@ -107,16 +107,17 @@ Pada pemodelan ini nantinya akan dilakukan tuning untuk mendapat akurasi yang le
 
 ## Evaluation
 1. Model KNN
-   Dari evaluasi model diperoleh hasil pembagian train dan test cukup stabil namun nilai MSE relatif tinggi. Dari prediksi diperoleh hasil bahwa model KNN meng-overestimate nilai aktual sebesar ~4.1 ribu, kesalahan masih besar, tetapi lebih kecil dibanding Random forest dan boosting algorithm.
+   Dari evaluasi model diperoleh hasil train MSE 4265 yang artinya cukup besar sehingga KNN tidak terlalu overfit tapi juga tidak sangat presisi di training. Kemudian untuk nilai test MSE diperoleh nilai 4727, nilai ini cukup dekat dengan train MSE yang menunjukkan performa cukup konsisten.
 2. Model Random Forest
-   Nilai MSE train dan test paling rendah diantara model yang lain. Namun dari prediksi dengan kenyataan model ini sangat jauh dari nilai aktual dibandingkan model KNN dan boosting algorithm.
+   Nilai MSE train model ini sebesar 4176 dan nilai MSE test sebesar 4176, kedua nilai ini paling rendah diantara model yang lain. Nilai train MSE yang kecil ini menunjukkan model sangat baik dalam mempelajari data latih. Kemudian nilai MSE yang juga kecil pada model ini menunjukkan performa yang paling baik secara keseluruhan. Sehingga model ini paling stabil dan direkomendasikan.
 3. Boosting Algorithm
-   Nilai MSE train dan test sangat tinggi, hal ini  mungkin dikarenakan model kurang belajar dengan baik (underfitting). Dan dari prediksi dengan nilai aktual model ini juga overestimate.
+   Nilai MSE train sebesar 6529, nilai ini menjadi yang terbesar diantara model lainnya sehingga model tidak terlalu presisi di data latih. Kemudian nilai test MSE sebesar 6123, nilai ini juga sangat besar yang menunjukkan model tidak belajar dengan baik secara umum. Data ini jika menggunakan boosting algorith konfigurasinya underfit atau kurang optimal. 
 
-Berikut visualisasi metrik evaluasi dari ketiga model:
-<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/plot_evaluasimetrik1.png" width="500"/>
-
-Dari ketiga model tersebut masih buruk dalam memprediksi, oleh karena itu dilakukan tuning untuk mendapatkan model yang lebih baik.
+Berikut metrik evaluasi dari ketiga model:
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Metrik%20Evaluasi.png" width="500"/>
+Dan bentuk plot dari matrik evaluasi yaitu sebagai berikut:
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/evaluasi%20model.png" width="500"/>
+Pada perbandingan nilai prediksi antara ketiga model, prediksi KNN paling dekat dengan nilai aktual, namun perbedaan nilai prediksi dan nilai aktual masih sangat jauh, oleh karena itu dilakukan tuning untuk mendapatkan model yang lebih baik.
 
 Evaluasi setelah tuning:
 1. K-Nearest Neighbor
