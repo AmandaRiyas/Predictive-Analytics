@@ -127,9 +127,11 @@ Evaluasi setelah tuning:
 3. Boosting Algorithm
    Menunjukkan performa terburuk karena  model tidak cukup baik menjelaskan variasi target serta nilai MSE dan MAE tertinggi. Untuk nilai prediksinya masih cukup jauh dengan nilai aktual.
 
-Berikut visualisasi evaluasi dari metrik evaluasi ketiga model
-<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/mse_plot.png" width="500"/>
-<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/r2_plot.png" width="500"/>
+Berikut metrik evaluasi ketiga model
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Metrik%20Evaluasi%20Setelah%20Tuning.png" width="500"/>
+Visualisasi grafik MSE setelah tuning:
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/MSE%20model%20setelah%20tuning.png" width="500"/>
+
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/mae_plot.png" width="500"/>
 
 
