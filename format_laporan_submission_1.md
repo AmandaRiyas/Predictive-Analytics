@@ -47,14 +47,16 @@ Untuk memahami seperti apa data yang digunakan maka dilakukan data understanding
 
 2. Exploratory Data Analysis - Menangani Missing Value dan Outliers
    Karena terdapat beberapa permasalahan pada data maka yang pertama dilakukan pengecaekan data pada duration_hours yang melebihi 24 jam dan dan menghapus penghapusan data yang isinya melebihi 24 jam. Kemudian dilakukan pengecekan pada variabel Total_Stop yang melebihi 2 kali pemberhentian dan diperoleh data yang terdapat 3 dan 4 kali pemberhentian padahal maksimal pemberhentian pesawat hanya 2 kali sehingga dilakukan penghapusan data pada data yang memiliki total pemberhentian lebih dari 2. Kemudian dilakukan pengecekan pada Duration_hours dan Duration_min untuk meyakinkan bahwa tidak ada data penerbangan pesawat yang isinya 0 semua. Setelah itu dilakukan pengecekan menggunakan boxplot agar terlihat jelas appakah terdapat outlier atau tidak pada price dan ditemukan ada beberapa outlier seperti di bawah ini:
-, dari pengecekan terdapat outlier, untuk penanganannya menggunakan IQR kemudian dilakukan penghapusan dari data yang di luar IQR. Tipe data Total_Stops, Day_of Week, dan Is_Weekend diubah menjadi kategori karena nilai ini merepresentasikan suatu kata. 
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/boxplot%20dengan%20outlier.png" width="500"/>
+Dan dilakukan penanganan menggunakan IQR sehingga diperoleh data yang lebih bersih dengan visualisasi seperti di bawah ini:
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/boxplot%20setelah%20pembersihan%20outlier.png" width="500"/>
 
+3. Exploratory Data Analysis - Univariate Analysis
+   Mengelompokkan categorical_features yang terdiri dari variabel (Airline, Source, Destination) dan numerical_featues yang terdiri dari variabel (Total_Stops, Date, Month, Year, Dep_hours, Dep_min, Arrival_hours, Arrival_min, Duration_hours, Duration_min) dengan target Price untuk mempermudah dalam penganalisisan data nantinya. Kemudian dibuat visualisasi data berupa diagram batang dari categirical_features yang terdapat informasi jumlah sampel dan persentase. Pada numerical_featues juga dibuat visualisasi menggunakan diagram batang dan boxplot numerical_featues terhadap price.
+   
 ## Data Preparation
 Data preparation sangat penting dilakukan sebelum membuat pemodelan karena untuk mengetahui lebih mendalam mengenai seperti apa data yang digunakan untuk menganalisis suatu permasalahan dan memastikan tidak ada kesalahan sebelum pemodelan agar model yang dihasilkan nanti lebih akurat. Pada bagian Data Preparatin ada beberapa tahapan yang dilakukan yaitu:
 
- 
-3. Exploratory Data Analysis - Univariate Analysis
-   Mengelompokkan categirical_features yang terdiri dari variabel Airline, Source, Destination, Total_Stops, Day_of_Week, Is_Weekend dan numerical_featues yang terdiri dari variabel Dep_hours, Dep_min, Arrival_hours, Arrival_min, Duration_hours, Duration_min untuk mempermudah dalam penganalisisan data nantinya. Kemudian dibuat visualisasi data berupa diagram batang dari categirical_features yang terdapat informasi jumlah sampel dan persentase. Pada numerical_featues juga dibuat visualisasi menggunakan diagram batang dan boxplot numerical_featues terhadap price.
 4.  Exploratory Data Analysis - Multivariate Analysis
    Pada tahap ini dilakukan pembuatan visualisasi untuk mengetahui pengaruh variabel-variabel dalam categirical_features dengan price dan untuk variabel-variabel numerical_featues dibuat matriks korelasi untuk mengetahui korelasi dari setiap variabel.
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/correlation_matrix.png" width="500"/>
