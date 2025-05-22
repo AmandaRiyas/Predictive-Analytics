@@ -58,15 +58,19 @@ Dan dilakukan penanganan menggunakan IQR sehingga diperoleh data yang lebih bers
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/diagram%20categorical%20Destination.png" width="500"/>
 
 Kemudian untuk numerical_featues dibuat diagram batang seperti di bawah ini:
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/diagram%20batang%20numerical%20features.png" width="500"/>
 
-   
-## Data Preparation
-Data preparation sangat penting dilakukan sebelum membuat pemodelan karena untuk mengetahui lebih mendalam mengenai seperti apa data yang digunakan untuk menganalisis suatu permasalahan dan memastikan tidak ada kesalahan sebelum pemodelan agar model yang dihasilkan nanti lebih akurat. Pada bagian Data Preparatin ada beberapa tahapan yang dilakukan yaitu:
+Dan dilihat juga distribusi harga tiket per maskapai dengan data tanpa outlier dan diperoleh visualisasi seperti di bawah ini:
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/boxplot%20price%20tanpa%20outlier.png" width="500"/>
 
 4.  Exploratory Data Analysis - Multivariate Analysis
    Pada tahap ini dilakukan pembuatan visualisasi untuk mengetahui pengaruh variabel-variabel dalam categirical_features dengan price dan untuk variabel-variabel numerical_featues dibuat matriks korelasi untuk mengetahui korelasi dari setiap variabel.
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/correlation_matrix.png" width="500"/>
 Dari matriks korelasi, diperoleh korelasi terkuat pada variabel Duration_hours dengan Price.
+   
+## Data Preparation
+Data preparation sangat penting dilakukan sebelum membuat pemodelan karena untuk mengetahui lebih mendalam mengenai seperti apa data yang digunakan untuk menganalisis suatu permasalahan dan memastikan tidak ada kesalahan sebelum pemodelan agar model yang dihasilkan nanti lebih akurat. Pada bagian Data Preparatin ada beberapa tahapan yang dilakukan yaitu:
+
 6. Encoding Fitur Kategori
    Karena terdapat beberapa variabel kategori maka diperlukan adanya encoding untuk merubah data kategorik ke data numerik.
 7. Train-Test-Split
