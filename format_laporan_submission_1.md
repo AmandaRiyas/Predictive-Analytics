@@ -57,7 +57,8 @@ Dan dilakukan penanganan menggunakan IQR sehingga diperoleh data yang lebih bers
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/diagram%20categorical%20source.png" width="500"/>
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/diagram%20categorical%20Destination.png" width="500"/>
 
-Kemudian untuk numerical_featues dibuat 
+Kemudian untuk numerical_featues dibuat diagram batang seperti di bawah ini:
+
    
 ## Data Preparation
 Data preparation sangat penting dilakukan sebelum membuat pemodelan karena untuk mengetahui lebih mendalam mengenai seperti apa data yang digunakan untuk menganalisis suatu permasalahan dan memastikan tidak ada kesalahan sebelum pemodelan agar model yang dihasilkan nanti lebih akurat. Pada bagian Data Preparatin ada beberapa tahapan yang dilakukan yaitu:
