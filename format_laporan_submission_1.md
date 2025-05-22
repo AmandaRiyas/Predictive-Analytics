@@ -64,9 +64,14 @@ Dan dilihat juga distribusi harga tiket per maskapai dengan data tanpa outlier d
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/boxplot%20price%20tanpa%20outlier.png" width="500"/>
 
 4.  Exploratory Data Analysis - Multivariate Analysis
-   Pada tahap ini dilakukan pembuatan visualisasi untuk mengetahui pengaruh variabel-variabel dalam categirical_features dengan price dan untuk variabel-variabel numerical_featues dibuat matriks korelasi untuk mengetahui korelasi dari setiap variabel.
-<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/correlation_matrix.png" width="500"/>
-Dari matriks korelasi, diperoleh korelasi terkuat pada variabel Duration_hours dengan Price.
+   Pada tahap ini dilakukan pembuatan visualisasi untuk mengetahui pengaruh variabel-variabel dalam categirical_features dengan price.
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/price%20terhadap%20airline.png" width="500"/>
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/price%20terhadap%20source.png" width="500"/>
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/price%20terhadap%20destination.png" width="500"/>
+Untuk variabel-variabel numerical_featues dibuat matriks korelasi untuk mengetahui korelasi dari setiap variabel.
+
+Dari matriks korelasi, diperoleh korelasi terkuat pada variabel Duration_hours dengan Price
+
    
 ## Data Preparation
 Data preparation sangat penting dilakukan sebelum membuat pemodelan karena untuk mengetahui lebih mendalam mengenai seperti apa data yang digunakan untuk menganalisis suatu permasalahan dan memastikan tidak ada kesalahan sebelum pemodelan agar model yang dihasilkan nanti lebih akurat. Pada bagian Data Preparatin ada beberapa tahapan yang dilakukan yaitu:
