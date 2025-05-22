@@ -52,7 +52,12 @@ Dan dilakukan penanganan menggunakan IQR sehingga diperoleh data yang lebih bers
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/boxplot%20setelah%20pembersihan%20outlier.png" width="500"/>
 
 3. Exploratory Data Analysis - Univariate Analysis
-   Mengelompokkan categorical_features yang terdiri dari variabel (Airline, Source, Destination) dan numerical_featues yang terdiri dari variabel (Total_Stops, Date, Month, Year, Dep_hours, Dep_min, Arrival_hours, Arrival_min, Duration_hours, Duration_min) dengan target Price untuk mempermudah dalam penganalisisan data nantinya. Kemudian dibuat visualisasi data berupa diagram batang dari categirical_features yang terdapat informasi jumlah sampel dan persentase. Pada numerical_featues juga dibuat visualisasi menggunakan diagram batang dan boxplot numerical_featues terhadap price.
+   Mengelompokkan categorical_features yang terdiri dari variabel (Airline, Source, Destination) dan numerical_featues yang terdiri dari variabel (Total_Stops, Date, Month, Year, Dep_hours, Dep_min, Arrival_hours, Arrival_min, Duration_hours, Duration_min) dengan target Price untuk mempermudah dalam penganalisisan data nantinya. Kemudian dibuat visualisasi data berupa diagram batang dari categirical_features seprti gambar di bawah ini untuk melihat seperti apa data yang ada:
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Diagram%20categorical%20Airline.png" width="500"/>
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/diagram%20categorical%20source.png" width="500"/>
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/diagram%20categorical%20Destination.png" width="500"/>
+
+Kemudian untuk numerical_featues dibuat 
    
 ## Data Preparation
 Data preparation sangat penting dilakukan sebelum membuat pemodelan karena untuk mengetahui lebih mendalam mengenai seperti apa data yang digunakan untuk menganalisis suatu permasalahan dan memastikan tidak ada kesalahan sebelum pemodelan agar model yang dihasilkan nanti lebih akurat. Pada bagian Data Preparatin ada beberapa tahapan yang dilakukan yaitu:
