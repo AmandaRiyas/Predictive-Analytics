@@ -37,6 +37,8 @@ Data pada proyek ini berasal dari kaggle yang berjudul Flight Price Prediction d
 - Year: Tahun dimana penerbangan dijadwalkan.
 - Dep_hours : Jam keberangkatan pesawat.
 - Dep_min : Menit pada jam keberangkatan pesawat.
+- Arrival_hours : Jam penerbangan tiba
+- Arrival_min : Menit pada jam saat pesawat tiba
 - Duration_hours : Durasi penerbangan dalam jam.
 - Duration_min : Durasi penerbangan dalam menit
 
@@ -68,22 +70,28 @@ Dan dilihat juga distribusi harga tiket per maskapai dengan data tanpa outlier d
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/price%20terhadap%20airline.png" width="500"/>
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/price%20terhadap%20source.png" width="500"/>
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/price%20terhadap%20destination.png" width="500"/>
-Untuk variabel-variabel numerical_featues dibuat matriks korelasi untuk mengetahui korelasi dari setiap variabel.
+Untuk variabel-variabel numerical_featues dibuat matriks korelasi untuk mengetahui korelasi dari setiap variabel. Berikut matriks korelasinya:
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/matriks%20korelasi%20terbaru.png" width="500"/>
+Dari matriks korelasi, diperoleh korelasi terkuat pada variabel Duration_hours dengan Total_Stops sebesar 0,76
 
-Dari matriks korelasi, diperoleh korelasi terkuat pada variabel Duration_hours dengan Price
-
-   
 ## Data Preparation
-Data preparation sangat penting dilakukan sebelum membuat pemodelan karena untuk mengetahui lebih mendalam mengenai seperti apa data yang digunakan untuk menganalisis suatu permasalahan dan memastikan tidak ada kesalahan sebelum pemodelan agar model yang dihasilkan nanti lebih akurat. Pada bagian Data Preparatin ada beberapa tahapan yang dilakukan yaitu:
+Data preparation sangat penting dilakukan sebelum membuat pemodelan karena untuk mengetahui lebih mendalam mengenai seperti apa data yang digunakan untuk menganalisis suatu permasalahan dan memastikan tidak ada kesalahan sebelum pemodelan agar model yang dihasilkan nanti lebih akurat. Pada bagian Data Preparation ada beberapa tahapan yang dilakukan yaitu:
 
-6. Encoding Fitur Kategori
-   Karena terdapat beberapa variabel kategori maka diperlukan adanya encoding untuk merubah data kategorik ke data numerik.
-7. Train-Test-Split
+1. Menghapus Duplikasi Data
+   Setelah penghapusan data diperoleh sisa data sebanyak 9579 data.
+2. Menggabungkan variabel date, month, dan year menjadi variabel Date_of_Journey dan membuat fitur turunan yaitu variabel Day_of_week dan Is_weekend. Setelah membuat fitur turunan variabel date, month, year, dan Date_of_Journey dihapus karena sudah tidak digunakan.
+3. Menggabungkan variabel Duration_hours dan Duration_min kemudian membuat fitur turunan dengan nama Duration_total_min atau bentuk dari jam dan menit yang sudah dibuah ke menit semua untuk mepermudah dalam menganalisis total durasi penerbangan. Setelah itu hapus variabel Duration_hours dan Duration_min karena sudah tidak digunakan.
+4. Menggabungkan variabel Arrival_hours dan Arrival_min kemudian membuat fitur turunan dengan nama Arrival_total_min atau bentuk dari jam dan menit yang sudah dibuah ke menit semua untuk mepermudah dalam menganalisis waktu pesawat tiba. Setelah itu hapus variabel Arrival_hours dan Arrival_min karena sudah tidak digunakan.
+5. Menggabungkan variabel Dep_hours dan Dep_min kemudian membuat fitur turunan dengan nama Dep_total_min atau bentuk dari jam dan menit yang sudah dibuah ke menit semua untuk mepermudah dalam menganalisis waktu pesawat berangkat. Setelah itu hapus variabel Dep_hours dan Dep_min karena sudah tidak digunakan.
+6. Hasil data setelah preparation terdiri dari 9579 data dengan 10 variabel yaitu variabel Airline (object), Souce (object), Destination (object), Total_Stops (int), Price (int), Day_of_week (int), Is_weekend (int), Duration_total_min (int), Arrival_total_min (int), Dep_total_min (int)
+7. Encoding Fitur Kategori
+Karena terdapat beberapa variabel kategori maka diperlukan adanya encoding untuk merubah data kategorik ke data numerik.
+8. Train-Test-Split
    Membagi data menjadi data train dan test. Dari output diperoleh:
    - total of sample in whole dataset: 9487
    - total of sample in train dataset: 8538
    - total of sample in test dataset: 949
-8. Standarisasi
+9. Standarisasi
    Standarisasi sangat penting untuk menyamakan skala fitur yang ada. 
 
 ## Modeling
