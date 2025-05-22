@@ -117,28 +117,25 @@ Berikut metrik evaluasi dari ketiga model:
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Metrik%20Evaluasi.png" width="500"/>
 Dan bentuk plot dari matrik evaluasi yaitu sebagai berikut:
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/evaluasi%20model.png" width="500"/>
-Pada perbandingan nilai prediksi antara ketiga model, prediksi KNN paling dekat dengan nilai aktual, namun perbedaan nilai prediksi dan nilai aktual masih sangat jauh, oleh karena itu dilakukan tuning untuk mendapatkan model yang lebih baik.
+Pada perbandingan nilai prediksi antara ketiga model diperoleh nilai seperti di bawah ini:
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Aktual%20dan%20prediksi%20sebelum%20tuning.png" width="500"/>
+Prediksi KNN paling dekat dengan nilai aktual, namun perbedaan nilai prediksi dan nilai aktual masih sangat jauh, oleh karena itu dilakukan tuning untuk mendapatkan model yang lebih baik.
 
 Evaluasi setelah tuning:
 1. K-Nearest Neighbor
-   Model KNN cukup baik dalam mempelajari data training (R² > 0.7), performanya cukup stabil saat diuji di data test. Nilai MSE dan MAE menunjukkan kesalahan prediksi yang moderat. Tidak terjadi overfitting yang besar, meskipun ada penurunan performa dari train ke test. KNN juga memberikan prediksi paling dekat dengan nilai aktual pada sampel ini.
+   Nilai train MSE pada model K-Nearest Neighbor sebesar 4,13 dan nilai test MSE sebesar 4,57. Nilai MSE pada KNN lebih tinggi dari random forest. Perbedaan train dan test kecil yang menandakan model konsisten tapi kurang akurat. Sehingga performa KNN sedang, model ini mungkin cocok untuk model yang simpel tapi cukup stabil.
 2. Random Forest
-   Memiliki performa terbaik secara keseluruhan karena tidak overfit, nilai MSE dan MAE paling rendah di test set sehingga prediksi paling akurat dan stabil di antara ketiga model. Untuk nilai prediksinya masih cukup jauh dengan nilai aktual.
+   Nilai train MSE sebesar 2,98 dan test MSE sebesar 3,91, kedua nilai ini menjadi nilai yang paling rendah dari model lainnya. Nilai train MSE yang rendah menunjukkan model belajar sangat baik dari data latih. Dan nilai test MSE yang paling rendah menunjukkan generalisasi yang baik ke data baru. Perbedaan nilai train dan test yang tidak terlalu besar memiliki arti stabil dan tidak overfit. Sehingga Random Forest menjadi model terbaik dari nilai MSE.
 3. Boosting Algorithm
-   Menunjukkan performa terburuk karena  model tidak cukup baik menjelaskan variasi target serta nilai MSE dan MAE tertinggi. Untuk nilai prediksinya masih cukup jauh dengan nilai aktual.
-
+   Nilai train MSE sebesar 6,42, nilai ini menjadi yang paling besar dari model lainnya artinya model tidk berhasil mempelajari data dengan baik. 
+Kemudian nilai test MSE sebesar 5,97 , nilai ini juga menjadi yang paling tinggi diantara model yang lain, nilai yang tinggi ini menunjukkan performa buruk pada data uji. Bisa jadi undefitting atau model tidak cocok dengan karakteristik data. Sehingga model boosting algorithm menjadi yang paling buruk dari model yang lain.
 Berikut metrik evaluasi ketiga model
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Metrik%20Evaluasi%20Setelah%20Tuning.png" width="500"/>
 Visualisasi grafik MSE setelah tuning:
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/MSE%20model%20setelah%20tuning.png" width="500"/>
+Pada perbandingan nilai prediksi antara ketiga model setelah tuning diperoleh nilai seperti di bawah ini:
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Aktual%20dan%20prediksi%20setelah%20tuning.png" width="500"/>
 
-<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/mae_plot.png" width="500"/>
+Prediksi Random Forest paling dekat dengan nilai aktual, dimana nilai prediksi random forest sebesar 6967,8 dan nilai aktualnya 7438
 
-
-Dari evaluasi ketiga metode tersebut jika hanya melihat 1 data point mungkin KNN lebih baik, namun jika mempertimbangkan performa keseluruhan model Random Forest lebih baik karena R² tertinggi (akurasi global terbaik), MAE dan MSE terendah pada test set, dan stabil di train-test atau tidak overfit. Oleh karen itu dapat disimpulkan bahwa random forest adalah model terbaik untuk memprediksi harga tiket pesawat.
-
-
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
-
+Dari evaluasi ketiga metode tersebut Random forest menjadi model terbaik yang dapat digunakan untuk memprediksi harga tiket pesawat. 
