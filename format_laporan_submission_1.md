@@ -6,22 +6,19 @@ Tiket pesawat sering kali berubah ubah, seseorang mengecek tiket pesawat dengan 
 
 ## Business Understanding
 
-Setiap orang selalu menginginkan suatu hal dengan harga yang murah namun dengan kualitas yang baik. Seperti ketika mereka membeli tiket pesawat, mereka akan mencoba menganalisis harga tiket peswat yang sesuai dengan keinginan mereka dengan mempertimbangkan berbagai aspek untuk mendapatkan pengalaman penerbangan yang baik. Hal ini juga menjadi suatu petimbangan maskapai dalam menentukan harga tiket pesawat agar konsumen yang diperoleh bisa semaksimal mungkin. Misalkan saja, harga tiket pesawat dari Yogyakarta ke Kalimantan pada hari Minggu sebesar Rp 1.000.000,00 namun pada hari Rabu tiket pesawat dengan tujuan yang sama dan pesawat yang sama harganya hanya Rp 950.000,00. Tentu saja ini akan menjadi suatu pertimbangan konsumen ketika membeli tiket pesawat.
-
-Dalam bisnis tentu saja akan berusaha semaksimal mungkin untuk mendapat profit terbesar. Oleh karena itu, penting bagi perusahaan untuk mengetahui dan dapat memprediksi harga tiket pesawar di pasar. Prediksi akan digunakan untuk menentukan harga tiket pesawat yang terbaik agar perusahaan dapat memperoleh profit semaksimal mungkin.
+Setiap orang selalu menginginkan suatu hal dengan harga yang murah namun dengan kualitas yang baik. Seperti ketika mereka membeli tiket pesawat, mereka akan mencoba menganalisis harga tiket peswat yang sesuai dengan keinginan mereka dengan mempertimbangkan berbagai aspek untuk mendapatkan pengalaman penerbangan yang baik. Seperti pada permasalahan tujuan dan maskapai yang digunakan meskipun sama namun ada kemungkinan harganya berbeda ketika jadwal keberangkatannya di waktu waktu tertentu. Hal ini menjadi suatu petimbangan maskapai dalam menentukan harga tiket pesawat agar profit yang diperoleh bisa semaksimal mungkin. Oleh karena itu, penting bagi perusahaan untuk mengetahui dan dapat memprediksi harga tiket pesawat di pasar. Prediksi akan digunakan untuk menentukan model terbaik yang dapat digunakan untuk memprediksi harga tiket pesawat.
 
 ### Problem Statements
 
-Berapa harga pasar tiket pesawat dengan dipengaruhi beberapa variabel penentu?
+Model apa yang paling cocok digunakan untuk membuat analisis predikasi harga tiket pesawat?
 
 ### Goals
-- Mengetahui variabel yang paling berkorelasi dengan harga tiket pesawat
-- Memprediksi harga tiket pesawat
+- Mendapat model yang tepat untuk memprediksi harga tiket pesawat
 
 ## Solution Statements
 - Mengunakan regresi dalam pemecahan masalah
 - Menerapkan beberapa pemodelan K-Nearest Neighbor, Random Forest, dan Boosting Algorithm untuk mencari tahu model terbaiknya
-- Menggunakan metrik evaluasi Mean Squared Error (MSE) atau Root Mean Square Error (RMSE)
+- Menggunakan metrik evaluasi Mean Squared Error (MSE)
 
 ## Data Understanding
 Data pada proyek ini berasal dari kaggle yang berjudul Flight Price Prediction dengan link https://www.kaggle.com/datasets/viveksharmar/flight-price-data 
@@ -107,11 +104,11 @@ Pada pemodelan ini nantinya akan dilakukan tuning untuk mendapat akurasi yang le
 
 ## Evaluation
 1. Model KNN
-   Dari evaluasi model diperoleh hasil train MSE 4265 yang artinya cukup besar sehingga KNN tidak terlalu overfit tapi juga tidak sangat presisi di training. Kemudian untuk nilai test MSE diperoleh nilai 4727, nilai ini cukup dekat dengan train MSE yang menunjukkan performa cukup konsisten.
+   Dari evaluasi model diperoleh hasil train MSE 4265,338616 yang artinya cukup besar sehingga KNN tidak terlalu overfit tapi juga tidak sangat presisi di training. Kemudian untuk nilai test MSE diperoleh nilai 4727,798823 nilai ini cukup dekat dengan train MSE yang menunjukkan performa cukup konsisten.
 2. Model Random Forest
-   Nilai MSE train model ini sebesar 4176 dan nilai MSE test sebesar 4176, kedua nilai ini paling rendah diantara model yang lain. Nilai train MSE yang kecil ini menunjukkan model sangat baik dalam mempelajari data latih. Kemudian nilai MSE yang juga kecil pada model ini menunjukkan performa yang paling baik secara keseluruhan. Sehingga model ini paling stabil dan direkomendasikan.
+   Nilai MSE train model ini sebesar 2327,643793 dan nilai MSE test sebesar 4176,975962, kedua nilai ini paling rendah diantara model yang lain. Nilai train MSE yang kecil ini menunjukkan model sangat baik dalam mempelajari data latih. Kemudian nilai MSE yang juga kecil pada model ini menunjukkan performa yang paling baik secara keseluruhan. Sehingga model ini paling stabil dan direkomendasikan.
 3. Boosting Algorithm
-   Nilai MSE train sebesar 6529, nilai ini menjadi yang terbesar diantara model lainnya sehingga model tidak terlalu presisi di data latih. Kemudian nilai test MSE sebesar 6123, nilai ini juga sangat besar yang menunjukkan model tidak belajar dengan baik secara umum. Data ini jika menggunakan boosting algorith konfigurasinya underfit atau kurang optimal. 
+   Nilai MSE train sebesar 6529,342032 nilai ini menjadi yang terbesar diantara model lainnya sehingga model tidak terlalu presisi di data latih. Kemudian nilai test MSE sebesar 6123,370864 nilai ini juga sangat besar yang menunjukkan model tidak belajar dengan baik secara umum. Data ini jika menggunakan boosting algorith konfigurasinya underfit atau kurang optimal. 
 
 Berikut metrik evaluasi dari ketiga model:
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Metrik%20Evaluasi.png" width="500"/>
@@ -119,16 +116,15 @@ Dan bentuk plot dari matrik evaluasi yaitu sebagai berikut:
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/evaluasi%20model.png" width="500"/>
 Pada perbandingan nilai prediksi antara ketiga model diperoleh nilai seperti di bawah ini:
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Aktual%20dan%20prediksi%20sebelum%20tuning.png" width="500"/>
-Prediksi KNN paling dekat dengan nilai aktual, namun perbedaan nilai prediksi dan nilai aktual masih sangat jauh, oleh karena itu dilakukan tuning untuk mendapatkan model yang lebih baik.
+Prediksi KNN paling dekat dengan nilai aktual, yaitu nilai prediksinya 12504,6 dan nilai aktualnya 7438, namun perbedaan nilai prediksi dan nilai aktual masih sangat jauh, oleh karena itu dilakukan tuning untuk mendapatkan model yang lebih baik.
 
 Evaluasi setelah tuning:
 1. K-Nearest Neighbor
-   Nilai train MSE pada model K-Nearest Neighbor sebesar 4,13 dan nilai test MSE sebesar 4,57. Nilai MSE pada KNN lebih tinggi dari random forest. Perbedaan train dan test kecil yang menandakan model konsisten tapi kurang akurat. Sehingga performa KNN sedang, model ini mungkin cocok untuk model yang simpel tapi cukup stabil.
+   Nilai train MSE pada model K-Nearest Neighbor sebesar 4126519.224565 dan nilai test MSE sebesar 4573659.111391. Nilai MSE pada KNN lebih tinggi dari random forest. Perbedaan train dan test kecil yang menandakan model konsisten tapi kurang akurat. Sehingga performa KNN sedang, model ini mungkin cocok untuk model yang simpel tapi cukup stabil.
 2. Random Forest
-   Nilai train MSE sebesar 2,98 dan test MSE sebesar 3,91, kedua nilai ini menjadi nilai yang paling rendah dari model lainnya. Nilai train MSE yang rendah menunjukkan model belajar sangat baik dari data latih. Dan nilai test MSE yang paling rendah menunjukkan generalisasi yang baik ke data baru. Perbedaan nilai train dan test yang tidak terlalu besar memiliki arti stabil dan tidak overfit. Sehingga Random Forest menjadi model terbaik dari nilai MSE.
+   Nilai train MSE sebesar 2986528.767321 dan test MSE sebesar 3917136.474745, kedua nilai ini menjadi nilai yang paling rendah dari model lainnya. Nilai train MSE yang rendah menunjukkan model belajar sangat baik dari data latih. Dan nilai test MSE yang paling rendah menunjukkan generalisasi yang baik ke data baru. Perbedaan nilai train dan test yang tidak terlalu besar memiliki arti stabil dan tidak overfit. Sehingga Random Forest menjadi model terbaik dari nilai MSE.
 3. Boosting Algorithm
-   Nilai train MSE sebesar 6,42, nilai ini menjadi yang paling besar dari model lainnya artinya model tidk berhasil mempelajari data dengan baik. 
-Kemudian nilai test MSE sebesar 5,97 , nilai ini juga menjadi yang paling tinggi diantara model yang lain, nilai yang tinggi ini menunjukkan performa buruk pada data uji. Bisa jadi undefitting atau model tidak cocok dengan karakteristik data. Sehingga model boosting algorithm menjadi yang paling buruk dari model yang lain.
+   Nilai train MSE sebesar 6422229.830446, nilai ini menjadi yang paling besar dari model lainnya artinya model tidk berhasil mempelajari data dengan baik. Kemudian nilai test MSE sebesar 5973400.421522 , nilai ini juga menjadi yang paling tinggi diantara model yang lain, nilai yang tinggi ini menunjukkan performa buruk pada data uji. Bisa jadi undefitting atau model tidak cocok dengan karakteristik data. Sehingga model boosting algorithm menjadi yang paling buruk dari model yang lain.
 Berikut metrik evaluasi ketiga model
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Metrik%20Evaluasi%20Setelah%20Tuning.png" width="500"/>
 Visualisasi grafik MSE setelah tuning:
