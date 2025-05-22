@@ -59,7 +59,7 @@ Dan dilakukan penanganan menggunakan IQR sehingga diperoleh data yang lebih bers
 Kemudian untuk numerical_featues dibuat diagram batang seperti di bawah ini:
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/diagram%20batang%20numerical%20features.png" width="500"/>
 
-Dan dilihat juga distribusi harga tiket per maskapai dengan data tanpa outlier dan diperoleh visualisasi seperti di bawah ini:
+Dan dilihat juga distribusi harga tiket per maskapai dengan data tanpa outlier dan diperoleh visualisasi seperti di bawah:
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/boxplot%20price%20tanpa%20outlier.png" width="500"/>
 
 4.  Exploratory Data Analysis - Multivariate Analysis
@@ -69,7 +69,7 @@ Dan dilihat juga distribusi harga tiket per maskapai dengan data tanpa outlier d
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/price%20terhadap%20destination.png" width="500"/>
 Untuk variabel-variabel numerical_featues dibuat matriks korelasi untuk mengetahui korelasi dari setiap variabel. Berikut matriks korelasinya:
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/matriks%20korelasi%20terbaru.png" width="500"/>
-Dari matriks korelasi, diperoleh korelasi terkuat pada variabel Duration_hours dengan Total_Stops sebesar 0,76
+Dari matriks korelasi, diperoleh korelasi terkuat pada variabel Duration_hours dengan Total_Stops sebesar 0,76. Dan pada korelasi ini terlihat bahwa tahun warnanya putih yang artinya korelasi tahun pada data ini tidak berpengaruh karena isinya hanya satu variabel. Oleh karena itu pada data preparation nanti diperlukan penggabungan date, month, dan year agar ketiga variabel ini lebih bermakna.
 
 ## Data Preparation
 Data preparation sangat penting dilakukan sebelum membuat pemodelan karena untuk mengetahui lebih mendalam mengenai seperti apa data yang digunakan untuk menganalisis suatu permasalahan dan memastikan tidak ada kesalahan sebelum pemodelan agar model yang dihasilkan nanti lebih akurat. Pada bagian Data Preparation ada beberapa tahapan yang dilakukan yaitu:
