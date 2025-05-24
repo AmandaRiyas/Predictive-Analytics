@@ -225,4 +225,4 @@ Prediksi Boosting Algorithm paling dekat dengan nilai aktual, dimana nilai predi
 
 
 ## Kesimpulan
-Meskipun pada prediksi yang terbaik adalah Boosting Algorithm namun Random Forest adalah model yang terbaik karena nilai MSE terkecil. Sebab lebih baik mengutamakan akurasi prediksi di tiap baris atau kestabilan dalam error individual dari pada perbandingan nilai prediksi dan nilai aktual. Model ini adalah yang cocok untuk memprediksi harga tiket pesawat.
+Meskipun pada prediksi yang terbaik adalah Boosting Algorithm namun Random Forest adalah model yang terbaik karena nilai MSE terkecil. Sebab lebih baik mengutamakan kestabilan error individual dari pada perbandingan nilai prediksi dan nilai aktual. Sehingga model Random Forest adalah yang cocok untuk memprediksi harga tiket pesawat.
