@@ -209,7 +209,7 @@ Evaluasi setelah tuning:
    Nilai train MSE sebesar 6422229.830446, nilai ini menjadi yang paling besar dari model lainnya artinya model tidk berhasil mempelajari data dengan baik. Kemudian nilai test MSE sebesar 5973400.421522 , nilai ini juga menjadi yang paling tinggi diantara model yang lain, nilai yang tinggi ini menunjukkan performa buruk pada data uji. Bisa jadi undefitting atau model tidak cocok dengan karakteristik data. Sehingga model boosting algorithm menjadi yang paling buruk dari model yang lain.
 Berikut metrik evaluasi ketiga model
 
-<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Metrik%20Evaluasi%20Setelah%20Tuning.png" width="500"/>
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Evaluasi%20Setelah%20Tuning.png" width="500"/>
 
 Visualisasi grafik MSE setelah tuning:
 
