@@ -221,8 +221,6 @@ Pada perbandingan nilai prediksi antara ketiga model setelah tuning diperoleh ni
 
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Aktual%20vs%20prediksi%20setelah%20tuning.png" width="500"/>
 
-Dari evaluasi ketiga model setelah tuning Random Forest adalah model terbaik karena nilai MSE paling rendah diantara model yang lain
-
 Prediksi Boosting Algorithm paling dekat dengan nilai aktual, dimana nilai prediksi Boosting Algorithm sebesar 4981.5 dan nilai aktualnya 7438
 
 
