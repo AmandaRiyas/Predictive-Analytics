@@ -189,7 +189,7 @@ Dari evaluasi yang telah dilakukan nilai mse yang terbaik yaitu pada model KNN d
 
 Pada perbandingan nilai prediksi antara ketiga model diperoleh nilai seperti di bawah ini:
 
-<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Aktual%20vs%20prediksi%20sebelum%20tuning.png" width="500"/>
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Aktual%20dan%20prediksi%20sebelum%20tuning.png" width="500"/>
 
 Prediksi KNN paling dekat dengan nilai aktual, yaitu nilai prediksinya 12504,6 dan nilai aktualnya 7438, namun perbedaan nilai prediksi dan nilai aktual masih sangat jauh, oleh karena itu dilakukan tuning untuk mendapatkan model yang lebih baik.
 
