@@ -66,39 +66,60 @@ Setelah dilakukan penghapusan outlier, terdapat masih ada 2 outlier yang sangat 
 - Pada diagram batang distribusi `Source`terhadap jumlah, tempat keberangkatan tertinggi yaitu di Delhi dengan jumlah 4059 dan yang terendah di Chennai dengan jumlah 381
 - Pada diagram batang distribusi `Destination`terhadap jumlah, tujuan destinasi tertinggi yaitu Cochin dengan jumlah 4059 dan yang terendah di Kolkata dengan jumlah 381.
 
-Kemudian untuk numerical_featues dibuat diagram batang seperti di bawah ini:
+Kemudian untuk numerical_features dibuat diagram batang seperti di bawah ini:
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/diagram%20batang%20numerical%20features.png" width="500"/>
 
-Dan dilihat juga distribusi harga tiket per maskapai dengan data tanpa outlier dan diperoleh visualisasi seperti di bawah:
+- Dari diagram batang Distribusi `Total_Stops`, jumlah total stop tertinggi yaitu di angka 1 yang artinya pesawat hanya transit 1 kali dan total stop terendah di angka 2 yang artinya pesawat melakukan  2 kali transit
+- Dari diagram batang distribusi `Date`, tanggal tertinggi berada di batang ke empat atau sekitar tanggal 8 dan yang terendah berada di batang ke 2 yaitu sekitar tanggal 3
+- Dari diagram batang distribusi `month`, bulan dengan jumlah penerbangan tertinggi terjadi pada bulan 6 atau bulan Juni dan yang terendah yaitu pada bulan ke 4 atau bulan April.
+- Dari diagram batang distribusi `Year` terlihat hanya ada satu batang yaitu di tahun 2019, yang artinya data hanya pada rentang tahin 2019.
+- Dari diagram batang distribusi `Dep_hours` terlihat bahwa jam keberangkatan pesawat tertinggi terjadi pada jam 7 dan yang terendah pada jam 3.
+- Dari diagram batang distribusi `Dep_min` terlihat bahwa menit keberangkatan pesawat tertinggi pada menit 0, artinya pesawat lebih sering berangkat di jam yang tepat todak lebih beberapa menit. Dan keberangkatan pesawat terendah di menit 40.
+- Dari diagram batang distribusi `Arrival_hours` terlihat bahwa pesawat sering tiba di pukul 19 dan paling jarang tiba di pukul 6.
+- Dari diagram batang distribusi `Arrival_min` terlihat bahwa pesawat sering tiba di menit 0 dan paling jarang tiba di menit 55.
+- Dari diagram batang distribusi `Duration_hours` terlihat bahwa lama penerbangan paling sering yaitu selama 2 jam dan yang paling jarang yaitu selama 17 jam.
+- Dari diagram batang distribusi `Duration_min` terlihat bahwa durasi menit dalam penerbangan paling sering di menit 30 dan yang paling jarang dengan durasi menit 10.
+
+Dan dilihat juga distribusi harga tiket per maskapai dengan data yang tanpa outlier dan diperoleh visualisasi seperti di bawah:
+
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/boxplot%20price%20tanpa%20outlier.png" width="500"/>
+
+Dari boxplot diagram `Airline` terhadap `Price` terlihat bahwa range harga terpanjang pada maskapai Jet Airways dengan menyediakan tiket paling murah hingga paling mahal dan range harga terpendek pada maskapai Trujet.
 
 4.  Exploratory Data Analysis - Multivariate Analysis
    Pada tahap ini dilakukan pembuatan visualisasi untuk mengetahui pengaruh variabel-variabel dalam categirical_features dengan price.
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/price%20terhadap%20airline.png" width="500"/>
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/price%20terhadap%20source.png" width="500"/>
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/price%20terhadap%20destination.png" width="500"/>
+
+- Dari diagram hubungan variabel `Airline` dengan `Price` terlihat bahwa maskapai dengan harga tertinggi yaitu Multiple carriers Premium economy dan yang terendah Trujet.
+- Dari diagram hubungan variabel `Source` dengan `Price` terlihat bahwa harga lokasi keberangkatan termahal berada di Delhi dan yang paling murah di Mumbai
+- Dari diagram hubungan variabel `Destination` dengan `Price` terlihat bahwa harga lokasi pendaratan termahal berada di New Delhi dan Cochin. Untuk yang termurah berada di Hyderabad
+
 Untuk variabel-variabel numerical_featues dibuat matriks korelasi untuk mengetahui korelasi dari setiap variabel. Berikut matriks korelasinya:
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/matriks%20korelasi%20terbaru.png" width="500"/>
-Dari matriks korelasi, diperoleh korelasi terkuat pada variabel Duration_hours dengan Total_Stops sebesar 0,76. Dan pada korelasi ini terlihat bahwa tahun warnanya putih yang artinya korelasi tahun pada data ini tidak berpengaruh karena isinya hanya satu variabel. Oleh karena itu pada data preparation nanti diperlukan penggabungan date, month, dan year agar ketiga variabel ini lebih bermakna.
+
+- Korelasi terkuat pada variabel `Total_Stops` dan `Duration_hours`yaitu sebesar 0,67
+- Korelasi terendah pada variabel -0 yaitu pada variabel `Date` dan `Arrival_hours`, variabel `Date` dan `Dep_min`, sertabvariabel `Date` dan `Total_Stops`. Nilai -0 ini artinya tidak ada korelasi sama sekali antar variabel
+- Korelasi `Year` tidak terlihat karena isi tahun hanya sama
 
 ## Data Preparation
 Data preparation sangat penting dilakukan sebelum membuat pemodelan karena untuk mengetahui lebih mendalam mengenai seperti apa data yang digunakan untuk menganalisis suatu permasalahan dan memastikan tidak ada kesalahan sebelum pemodelan agar model yang dihasilkan nanti lebih akurat. Pada bagian Data Preparation ada beberapa tahapan yang dilakukan yaitu:
 
-1. Menghapus Duplikasi Data
+A. Menghapus Duplikasi Data
    Setelah penghapusan data diperoleh sisa data sebanyak 9579 data.
-2. Menggabungkan variabel date, month, dan year menjadi variabel Date_of_Journey dan membuat fitur turunan yaitu variabel Day_of_week dan Is_weekend. Setelah membuat fitur turunan variabel date, month, year, dan Date_of_Journey dihapus karena sudah tidak digunakan.
-3. Menggabungkan variabel Duration_hours dan Duration_min kemudian membuat fitur turunan dengan nama Duration_total_min atau bentuk dari jam dan menit yang sudah dibuah ke menit semua untuk mepermudah dalam menganalisis total durasi penerbangan. Setelah itu hapus variabel Duration_hours dan Duration_min karena sudah tidak digunakan.
-4. Menggabungkan variabel Arrival_hours dan Arrival_min kemudian membuat fitur turunan dengan nama Arrival_total_min atau bentuk dari jam dan menit yang sudah dibuah ke menit semua untuk mepermudah dalam menganalisis waktu pesawat tiba. Setelah itu hapus variabel Arrival_hours dan Arrival_min karena sudah tidak digunakan.
-5. Menggabungkan variabel Dep_hours dan Dep_min kemudian membuat fitur turunan dengan nama Dep_total_min atau bentuk dari jam dan menit yang sudah dibuah ke menit semua untuk mepermudah dalam menganalisis waktu pesawat berangkat. Setelah itu hapus variabel Dep_hours dan Dep_min karena sudah tidak digunakan.
-6. Hasil data setelah preparation terdiri dari 9579 data dengan 10 variabel yaitu variabel Airline (object), Souce (object), Destination (object), Total_Stops (int), Price (int), Day_of_week (int), Is_weekend (int), Duration_total_min (int), Arrival_total_min (int), Dep_total_min (int)
-7. Encoding Fitur Kategori
-Karena terdapat beberapa variabel kategori maka diperlukan adanya encoding untuk merubah data kategorik ke data numerik.
-8. Train-Test-Split
-   Membagi data menjadi data train dan test. Dari output diperoleh:
-   - total of sample in whole dataset: 9487
-   - total of sample in train dataset: 8538
-   - total of sample in test dataset: 949
-9. Standarisasi
+B. Filter Data
+1. Menggabungkan variabel date, month, dan year menjadi variabel Date_of_Journey dan membuat fitur turunan yaitu variabel Day_of_week dan Is_weekend. Setelah membuat fitur turunan variabel date, month, year, dan Date_of_Journey dihapus karena sudah tidak digunakan.
+2. Menggabungkan variabel Duration_hours dan Duration_min kemudian membuat fitur turunan dengan nama Duration_total_min atau bentuk dari jam dan menit yang sudah dibuah ke menit semua untuk mepermudah dalam menganalisis total durasi penerbangan. Setelah itu hapus variabel Duration_hours dan Duration_min karena sudah tidak digunakan.
+3. Menggabungkan variabel Arrival_hours dan Arrival_min kemudian membuat fitur turunan dengan nama Arrival_total_min atau bentuk dari jam dan menit yang sudah dibuah ke menit semua untuk mepermudah dalam menganalisis waktu pesawat tiba. Setelah itu hapus variabel Arrival_hours dan Arrival_min karena sudah tidak digunakan.
+4. Menggabungkan variabel Dep_hours dan Dep_min kemudian membuat fitur turunan dengan nama Dep_total_min atau bentuk dari jam dan menit yang sudah dibuah ke menit semua untuk mepermudah dalam menganalisis waktu pesawat berangkat. Setelah itu hapus variabel Dep_hours dan Dep_min karena sudah tidak digunakan.
+
+Hasil data setelah preparation terdiri dari 9579 data dengan 10 variabel yaitu variabel Airline (object), Souce (object), Destination (object), Total_Stops (int), Price (int), Day_of_week (int), Is_weekend (int), Duration_total_min (int), Arrival_total_min (int), Dep_total_min (int)
+C. Encoding Fitur Kategori
+Sebelum melakukan encoding dilakuka penddefinisian ulang pada plane_no_outliers karena ada perubahan variabel pada data. Kemudian dilakukan pendefinisian ulang pada categorical_features dan numerical_features. Isi dari categorical_features yaitu Airline, Source, dan Destination. Dan isi pada numerical_features yaitu Total_Stops, Day_of_week, Is_weekend, Duration_total_min, Arrival_total_min, dan Dep_total_min. Setelah itu dilakukan encoding untuk merubah data kategorik ke data numerik.
+D. Train-Test-Split
+   Membagi data menjadi data train dan test. Dari output diperoleh dari total 9487 data, sebanyak 8538 data untuk train, dan 949 data untuk test.
+E. Standarisasi
    Standarisasi sangat penting untuk menyamakan skala fitur yang ada. 
 
 ## Modeling
