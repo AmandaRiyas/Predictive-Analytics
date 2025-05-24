@@ -17,7 +17,7 @@ Harga tiket pesawat memiliki fluktuasi yang tinggi karena dipengaruhi oleh beber
 
 ## Solution Statements
 - Menerapkan beberapa pemodelan K-Nearest Neighbor, Random Forest, dan Boosting Algorithm untuk mencari tahu model terbaiknya dengan menambahkan evaluasi performa menggunakan Mean Squared Error (MSE)
-- Melakuak hyperparameter tuning menggunakan GriSearchCV dan RandomizedSearchCV
+- Melakuakan hyperparameter tuning menggunakan GridSearchCV dan RandomizedSearchCV
 - Membandingkan performa dari model K-Nearest Neighbor, Random Forest, dan Boosting Algorithm.
 
 ## Data Understanding
@@ -129,7 +129,8 @@ E. Standarisasi <br>
 ## Modeling
 Pada tahap ini, dilakukan pemodelan prediksi harga tiket pesawat menggunakan tiga algoritma machine learning, yaitu K-Nearest Neighbors (KNN), Random Forest, dan Boosting. Ketiga model dilatih menggunakan data historis harga tiket pesawat yang telah diproses sebelumnya. Evaluasi awal dilakukan menggunakan metrik Mean Square Error (MSE).
 
-1. K-Nearest Neighbors
+1. K-Nearest Neighbors <br>
+
    K-Nearest Neighbors atau yang biasa disebut dengan KNN menggunakan algoritma‘kesamaan fitur’ untuk memprediksi nilai dari setiap data yang baru. Dengan kata lain, setiap data baru diberi nilai berdasarkan seberapa mirip titik tersebut dalam set pelatihan. KNN bekerja dengan membandingkan jarak satu sampel ke sampel pelatihan lain dengan memilih sejumlah k tetangga terdekat (dengan k adalah sebuah angka positif). Meskipun algoritma KNN mudah dipahami dan digunakan, ia memiliki kekurangan jika dihadapkan pada jumlah fitur atau dimensi yang besar. Permasalahan ini sering disebut sebagai curse of dimensionality (kutukan dimensi). Pada dasarnya, permasalahan ini muncul ketika jumlah sampel meningkat secara eksponensial seiring dengan jumlah dimensi (fitur) pada data.
    Parameter yang digunakan dalam model K-Nearest Neighbors ini yaitu:
 
@@ -140,7 +141,8 @@ Pada tahap ini, dilakukan pemodelan prediksi harga tiket pesawat menggunakan tig
 
 Model ini dilatih pada data latih (`X_train`, `y_train`) dan performanya dievaluasi dengan metrik Mean Squared Error (MSE) untuk data latih dan data uji.
 
-2. Random Forest
+2. Random Forest <br>
+
    Random forest merupakan salah satu model machine learning yang termasuk ke dalam kategori ensemble (group) learning. Pada model ensemble, setiap model harus membuat prediksi secara independen. Kemudian, prediksi dari setiap model ensemble ini digabungkan untuk membuat prediksi akhir. Namun model ini kurang baik untuk data yang sangat spars (jarang) atau high-dimensional, kurang interpretatif, lambat untuk prediksi, dan cenderung overfit pada data kecil.
    Parameter yang di gunakan di model Random Forest ini yaitu:
 
