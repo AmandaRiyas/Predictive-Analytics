@@ -153,8 +153,9 @@ Model ini dilatih pada data latih (`X_train`, `y_train`) dan performanya dievalu
 
 Model ini dilatih pada data latih (`X_train`, `y_train`) dan hasil prediksi dievaluasi menggunakan Mean Squared Error (MSE) pada data latih dan data uji.
 
-3. Boosting Algorithm
-   Boosting Algorith bertujuan untuk meningkatkan performa atau akurasi prediksi dengan menggabungkan beberapa model sederhana dan dianggap lemah (weak learners) sehingga membentuk suatu model yang kuat (strong ensemble learner). Algoritma ini sangat powerful dalam meningkatkan akurasi prediksi. Algoritma boosting sering mengungguli model yang lebih sederhana seperti logistic regression dan random forest. Namun model ini memiliki kelemahan yaitu lambat dalam pelatihan, sangat sensitif terhadap outlier, butuh banyak tuning, sulit diinterpretasikan, dan membutuhkan memori yang cukup besar.
+3. Boosting Algorithm <br>
+
+   Boosting Algorithm bertujuan untuk meningkatkan performa atau akurasi prediksi dengan menggabungkan beberapa model sederhana dan dianggap lemah (weak learners) sehingga membentuk suatu model yang kuat (strong ensemble learner). Algoritma ini sangat powerful dalam meningkatkan akurasi prediksi. Algoritma boosting sering mengungguli model yang lebih sederhana seperti logistic regression dan random forest. Namun model ini memiliki kelemahan yaitu lambat dalam pelatihan, sangat sensitif terhadap outlier, butuh banyak tuning, sulit diinterpretasikan, dan membutuhkan memori yang cukup besar.
    Parameter yang digunakan dalam model Boosting Algorithm ini yaitu:
 
 - `learning_rate=0.05`: Parameter ini mengontrol seberapa besar kontribusi setiap regressor lemah terhadap model akhir. Nilai yang lebih kecil membuat proses pelatihan lebih lambat namun bisa menghasilkan performa yang lebih stabil. Nilai 0.05 menunjukkan model akan belajar dengan kecepatan konservatif.
@@ -180,6 +181,8 @@ Dan bentuk plot dari matrik evaluasi yaitu sebagai berikut:
 
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/evaluasi%20model.png" width="500"/>
 
+Dari evaluasi yang telah dilakukan nilai mse yang terbaik yaitu pada model KNN dan yang terburuk pada Boosting
+
 Pada perbandingan nilai prediksi antara ketiga model diperoleh nilai seperti di bawah ini:
 
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Aktual%20dan%20prediksi%20sebelum%20tuning.png" width="500"/>
@@ -191,11 +194,13 @@ Tuning:
 2. Pada model Random Forest menggunakan RandomizedSearchCV untuk tuning model dengan parameter n_estimators yaitu [50, 100, 150] yang menunjukkan Jumlah pohon dalam ensemble Random Forest (lebih sedikit = lebih cepat, tapi bisa lebih variatif), max_depth yaitu [10, 16, 20] yang menunjukkan maksimum kedalaman tiap pohon, min_samples_split yaitu [2, 5] yang menunjukkan minimum jumlah sampel yang dibutuhkan untuk membagi node, min_samples_leaf yaitu [1, 2] yang menunjukkan minimum jumlah sampel di leaf node, dan max_features yaitu ['sqrt', 'log2', None] yang menunjukkan fitur yang membagi node. Dan diperoleh best parameter yaitu n_estimators=50 yang artinya jumlah pohon yang optimal adalah 50, max_depth=10 yang menunjukkan pohon tidak terlalu dalam untuk mengurangi risiko overfitting, min_sampes leaf=2 dan min_samples_split=2 untuk menjaga pohon dari mempelajari terlalu banyak noise data, serta max_features=None yang menunjukkan penggunaan semua fitur saat menentukan split terbaik yang dapat membantu model jika semua fitur informatif.
 3. Pada model boosting algorithm menggunakan GridSearchCV untuk tuning model dengan parameter n_estimators yaitu [50, 100, 200] yang menunjukkan jumlah total estimator, learning_rate yaitu [0.01, 0.05, 0.1, 0.2] yang menunjukkan pengontrol kontribusi tiap estimator, dan loss yaitu ['linear', 'square', 'exponential']. Linear menunjukkan kesalahan dihitung secara proporsional terhadap error, square menunjukkan kesalahan dikuadratkan, sehingga kesalahan besar dihukum lebih berat, dan exponential menunjukkan kesalahan tumbuh eksponensial seiring error meningkat. Dari tuning, diperoleh best parameternya yaitu learning_rate=0,01 yang menunjukkan bahwa model bekerja lebih baik dengan pembelajaran yang lambat, n_estimators=200 yang menunjukkan dibutuhkan banyak estimator agar boosting bisa belajar dari kesalahan sebelumnya karena learning rate kecil, dan loss=linear yang menunjukkan fungsi loss default.
 
+Kemudian dibuat dictionary model dari ketiga model yaitu KNN, Random Forest, dan Boosting Algorithm.
+
 Evaluasi setelah tuning:
 1. K-Nearest Neighbor
    Nilai train MSE pada model K-Nearest Neighbor sebesar 4126519.224565 dan nilai test MSE sebesar 4573659.111391. Nilai MSE pada KNN lebih tinggi dari random forest. Perbedaan train dan test kecil yang menandakan model konsisten tapi kurang akurat. Sehingga performa KNN sedang, model ini mungkin cocok untuk model yang simpel tapi cukup stabil.
 2. Random Forest
-   Nilai train MSE sebesar 2986528.767321 dan test MSE sebesar 3917136.474745, kedua nilai ini menjadi nilai yang paling rendah dari model lainnya. Nilai train MSE yang rendah menunjukkan model belajar sangat baik dari data latih. Dan nilai test MSE yang paling rendah menunjukkan generalisasi yang baik ke data baru. Perbedaan nilai train dan test yang tidak terlalu besar memiliki arti stabil dan tidak overfit. Sehingga Random Forest menjadi model terbaik dari nilai MSE.
+   Nilai train MSE sebesar 3397884.162461 dan test MSE sebesar 3682727.457989, kedua nilai ini menjadi nilai yang paling rendah dari model lainnya. Nilai train MSE yang rendah menunjukkan model belajar sangat baik dari data latih. Dan nilai test MSE yang paling rendah menunjukkan generalisasi yang baik ke data baru. Perbedaan nilai train dan test yang tidak terlalu besar memiliki arti stabil dan tidak overfit. Sehingga Random Forest menjadi model terbaik dari nilai MSE.
 3. Boosting Algorithm
    Nilai train MSE sebesar 6422229.830446, nilai ini menjadi yang paling besar dari model lainnya artinya model tidk berhasil mempelajari data dengan baik. Kemudian nilai test MSE sebesar 5973400.421522 , nilai ini juga menjadi yang paling tinggi diantara model yang lain, nilai yang tinggi ini menunjukkan performa buruk pada data uji. Bisa jadi undefitting atau model tidak cocok dengan karakteristik data. Sehingga model boosting algorithm menjadi yang paling buruk dari model yang lain.
 Berikut metrik evaluasi ketiga model
