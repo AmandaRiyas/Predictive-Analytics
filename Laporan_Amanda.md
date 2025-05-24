@@ -108,14 +108,15 @@ Data preparation sangat penting dilakukan sebelum membuat pemodelan karena untuk
 
 A. Menghapus Duplikasi Data
    Setelah penghapusan data diperoleh sisa data sebanyak 9579 data.
-B. Filter Data
+
+B. Filter Data<br>
 1. Menggabungkan variabel date, month, dan year menjadi variabel Date_of_Journey dan membuat fitur turunan yaitu variabel Day_of_week dan Is_weekend. Setelah membuat fitur turunan variabel date, month, year, dan Date_of_Journey dihapus karena sudah tidak digunakan.
 2. Menggabungkan variabel Duration_hours dan Duration_min kemudian membuat fitur turunan dengan nama Duration_total_min atau bentuk dari jam dan menit yang sudah dibuah ke menit semua untuk mepermudah dalam menganalisis total durasi penerbangan. Setelah itu hapus variabel Duration_hours dan Duration_min karena sudah tidak digunakan.
 3. Menggabungkan variabel Arrival_hours dan Arrival_min kemudian membuat fitur turunan dengan nama Arrival_total_min atau bentuk dari jam dan menit yang sudah dibuah ke menit semua untuk mepermudah dalam menganalisis waktu pesawat tiba. Setelah itu hapus variabel Arrival_hours dan Arrival_min karena sudah tidak digunakan.
 4. Menggabungkan variabel Dep_hours dan Dep_min kemudian membuat fitur turunan dengan nama Dep_total_min atau bentuk dari jam dan menit yang sudah dibuah ke menit semua untuk mepermudah dalam menganalisis waktu pesawat berangkat. Setelah itu hapus variabel Dep_hours dan Dep_min karena sudah tidak digunakan.
 
 Hasil data setelah preparation terdiri dari 9579 data dengan 10 variabel yaitu variabel Airline (object), Souce (object), Destination (object), Total_Stops (int), Price (int), Day_of_week (int), Is_weekend (int), Duration_total_min (int), Arrival_total_min (int), Dep_total_min (int)
-C. Encoding Fitur Kategori
+C. Encoding Fitur Kategori<br>
 Sebelum melakukan encoding dilakuka penddefinisian ulang pada plane_no_outliers karena ada perubahan variabel pada data. Kemudian dilakukan pendefinisian ulang pada categorical_features dan numerical_features. Isi dari categorical_features yaitu Airline, Source, dan Destination. Dan isi pada numerical_features yaitu Total_Stops, Day_of_week, Is_weekend, Duration_total_min, Arrival_total_min, dan Dep_total_min. Setelah itu dilakukan encoding untuk merubah data kategorik ke data numerik.
 D. Train-Test-Split
    Membagi data menjadi data train dan test. Dari output diperoleh dari total 9487 data, sebanyak 8538 data untuk train, dan 949 data untuk test.
