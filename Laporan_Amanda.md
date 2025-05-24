@@ -116,21 +116,49 @@ B. Filter Data<br>
 4. Menggabungkan variabel Dep_hours dan Dep_min kemudian membuat fitur turunan dengan nama Dep_total_min atau bentuk dari jam dan menit yang sudah dibuah ke menit semua untuk mepermudah dalam menganalisis waktu pesawat berangkat. Setelah itu hapus variabel Dep_hours dan Dep_min karena sudah tidak digunakan.
 
 Hasil data setelah preparation terdiri dari 9579 data dengan 10 variabel yaitu variabel Airline (object), Souce (object), Destination (object), Total_Stops (int), Price (int), Day_of_week (int), Is_weekend (int), Duration_total_min (int), Arrival_total_min (int), Dep_total_min (int)
-C. Encoding Fitur Kategori<br>
+
+C. Encoding Fitur Kategori <br>
 Sebelum melakukan encoding dilakuka penddefinisian ulang pada plane_no_outliers karena ada perubahan variabel pada data. Kemudian dilakukan pendefinisian ulang pada categorical_features dan numerical_features. Isi dari categorical_features yaitu Airline, Source, dan Destination. Dan isi pada numerical_features yaitu Total_Stops, Day_of_week, Is_weekend, Duration_total_min, Arrival_total_min, dan Dep_total_min. Setelah itu dilakukan encoding untuk merubah data kategorik ke data numerik.
-D. Train-Test-Split
+
+D. Train-Test-Split <br>
    Membagi data menjadi data train dan test. Dari output diperoleh dari total 9487 data, sebanyak 8538 data untuk train, dan 949 data untuk test.
-E. Standarisasi
+   
+E. Standarisasi <br>
    Standarisasi sangat penting untuk menyamakan skala fitur yang ada. 
 
 ## Modeling
-Ada 3 model yang dicoba untuk memprediksi harga tiket pesawat yaitu:
-1. K-Nearest Neighbor
-   K-Nearest Neighbor atau yang biasa disebut dengan KNN menggunakan algoritma‘kesamaan fitur’ untuk memprediksi nilai dari setiap data yang baru. Dengan kata lain, setiap data baru diberi nilai berdasarkan seberapa mirip titik tersebut dalam set pelatihan. KNN bekerja dengan membandingkan jarak satu sampel ke sampel pelatihan lain dengan memilih sejumlah k tetangga terdekat (dengan k adalah sebuah angka positif). Meskipun algoritma KNN mudah dipahami dan digunakan, ia memiliki kekurangan jika dihadapkan pada jumlah fitur atau dimensi yang besar. Permasalahan ini sering disebut sebagai curse of dimensionality (kutukan dimensi). Pada dasarnya, permasalahan ini muncul ketika jumlah sampel meningkat secara eksponensial seiring dengan jumlah dimensi (fitur) pada data.
+Pada tahap ini, dilakukan pemodelan prediksi harga tiket pesawat menggunakan tiga algoritma machine learning, yaitu K-Nearest Neighbors (KNN), Random Forest, dan Boosting. Ketiga model dilatih menggunakan data historis harga tiket pesawat yang telah diproses sebelumnya. Evaluasi awal dilakukan menggunakan metrik Mean Square Error (MSE).
+
+1. K-Nearest Neighbors
+   K-Nearest Neighbors atau yang biasa disebut dengan KNN menggunakan algoritma‘kesamaan fitur’ untuk memprediksi nilai dari setiap data yang baru. Dengan kata lain, setiap data baru diberi nilai berdasarkan seberapa mirip titik tersebut dalam set pelatihan. KNN bekerja dengan membandingkan jarak satu sampel ke sampel pelatihan lain dengan memilih sejumlah k tetangga terdekat (dengan k adalah sebuah angka positif). Meskipun algoritma KNN mudah dipahami dan digunakan, ia memiliki kekurangan jika dihadapkan pada jumlah fitur atau dimensi yang besar. Permasalahan ini sering disebut sebagai curse of dimensionality (kutukan dimensi). Pada dasarnya, permasalahan ini muncul ketika jumlah sampel meningkat secara eksponensial seiring dengan jumlah dimensi (fitur) pada data.
+   Parameter yang digunakan dalam model K-Nearest Neighbors ini yaitu:
+
+- `n_neighbors=10`: Menentukan jumlah tetangga terdekat yang digunakan untuk memprediksi nilai. Model akan melihat 10 titik data terdekat untuk menentukan prediksi harga tiket pesawat. Pemilihan nilai ini dapat mempengaruhi bias dan variansi model.
+- `weights='uniform'` (default): Semua tetangga memiliki bobot yang sama dalam proses prediksi.
+- `p=2` (default): Menggunakan Euclidean Distance untuk mengukur jarak antara titik data.
+- `algorithm='auto'` (default): Scikit-learn akan memilih algoritma terbaik secara otomatis (ball tree, kd tree, atau brute-force) tergantung pada data.
+
+Model ini dilatih pada data latih (`X_train`, `y_train`) dan performanya dievaluasi dengan metrik Mean Squared Error (MSE) untuk data latih dan data uji.
+
 2. Random Forest
-   Random forest merupakan salah satu model machine learning yang termasuk ke dalam kategori ensemble (group) learning. Pada model ensemble, setiap model harus membuat prediksi secara independen. Kemudian, prediksi dari setiap model ensemble ini digabungkan untuk membuat prediksi akhir. Namun model ini kurang baik untuk data yang sangat spars (jarang) atau high-dimensional, kurang interpretatif, lambat untuk prediksi, dan cenderung overfit pada data kecil
+   Random forest merupakan salah satu model machine learning yang termasuk ke dalam kategori ensemble (group) learning. Pada model ensemble, setiap model harus membuat prediksi secara independen. Kemudian, prediksi dari setiap model ensemble ini digabungkan untuk membuat prediksi akhir. Namun model ini kurang baik untuk data yang sangat spars (jarang) atau high-dimensional, kurang interpretatif, lambat untuk prediksi, dan cenderung overfit pada data kecil.
+   Parameter yang di gunakan di model Random Forest ini yaitu:
+
+- `n_estimators=50`: Jumlah pohon (tree) yang digunakan dalam hutan acak. Semakin banyak jumlah pohon, umumnya model semakin stabil, tetapi waktu komputasi juga meningkat. Dalam kasus ini digunakan 50 pohon.
+- `max_depth=16`: Batas maksimum kedalaman setiap pohon. Parameter ini digunakan untuk mencegah pohon tumbuh terlalu dalam dan overfitting. Dengan kedalaman 16, model cukup kompleks untuk menangkap pola, tapi tetap terkontrol.
+- `random_state=55`: Menjamin hasil yang konsisten setiap kali model dilatih dengan cara mengatur seed generator angka acak.
+- `n_jobs=-1`: Menginstruksikan scikit-learn untuk menggunakan semua core CPU yang tersedia saat proses training dan prediksi, sehingga mempercepat komputasi.
+
+Model ini dilatih pada data latih (`X_train`, `y_train`) dan hasil prediksi dievaluasi menggunakan Mean Squared Error (MSE) pada data latih dan data uji.
+
 3. Boosting Algorithm
    Boosting Algorith bertujuan untuk meningkatkan performa atau akurasi prediksi dengan menggabungkan beberapa model sederhana dan dianggap lemah (weak learners) sehingga membentuk suatu model yang kuat (strong ensemble learner). Algoritma ini sangat powerful dalam meningkatkan akurasi prediksi. Algoritma boosting sering mengungguli model yang lebih sederhana seperti logistic regression dan random forest. Namun model ini memiliki kelemahan yaitu lambat dalam pelatihan, sangat sensitif terhadap outlier, butuh banyak tuning, sulit diinterpretasikan, dan membutuhkan memori yang cukup besar.
+   Parameter yang digunakan dalam model Boosting Algorithm ini yaitu:
+
+- `learning_rate=0.05`: Parameter ini mengontrol seberapa besar kontribusi setiap regressor lemah terhadap model akhir. Nilai yang lebih kecil membuat proses pelatihan lebih lambat namun bisa menghasilkan performa yang lebih stabil. Nilai 0.05 menunjukkan model akan belajar dengan kecepatan konservatif.
+- `random_state=55`: Digunakan untuk menjamin hasil yang reprodusibel dengan menetapkan seed untuk generator angka acak.
+
+Model dilatih pada data latih (`X_train`, `y_train`), dan performanya dievaluasi menggunakan Mean Squared Error (MSE) pada data latih dan data uji.
 
 Pada pemodelan ini nantinya akan dilakukan tuning untuk mendapat akurasi yang lebih baik dan natinya juga akan dipilih salah satu model yang paling baik dalam memprediksi harga tiket pesawat.
 
