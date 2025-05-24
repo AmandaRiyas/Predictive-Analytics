@@ -2,7 +2,11 @@
 
 ## Domain Proyek
 
-Tiket pesawat sering kali berubah ubah, seseorang mengecek tiket pesawat dengan pesawat yang sama namun dengan berbeda waktu landing sering kali menyebabkan perbedaan harga tiket pesawat padahal tujuannya sama. Perbedaan harga tiket pesawat ini membuat banyak orang merasa bingung mengenai kapan sebaiknya membeli tiket pesawat. Sebab banyak orang menginginkan bisa mendapat harga lebih murah tapi dengan kualitas dan pelayanan yang sama. Masalah ini bisa diselesaikan dengan suatu pemodelan salah satunnya pemodelan dalam machine learning seperti menggunakan model KNN, Random Forest, ataupun Boosting Algorithm, namun permasalahannya kita juga tidak tahu dimana model terbaik dari ketiga model tersebut.  Pada sebuah penelitian sebelumnya, prediksi harga tiket pesawat dengan menggunakan Logistic Regression, Random Forest, dan Gradient  Boosting diperoleh hasil Random  Forest lebih  baik  dari  model Logistic  Regression dan Gradient  Boosting(Zebua et al., 2022). Dan pada anlisis prediksi ini nanti akan mencoba menggunakan KNN, Random Forest, dan Boosting Algorithm untuk mengetahui model terbaik mana 
+Proyek ini berfokus pada penerapan machine learning untuk memprediksi harga tiket pesawat berdasarkan data historis yang tersedia secara publik. Industri penerbangan merupakan salah satu sektor dengan dinamika harga yang sangat tinggi, sehingga menjadi tantangan menarik dalam pengembangan model prediktif yang andal.
+Dataset yang digunakan mencakup berbagai fitur seperti maskapai penerbangan, asal dan tujuan, durasi penerbangan, waktu keberangkatan dan kedatangan, serta jumlah transit. Fitur-fitur ini dinilai relevan karena secara logis memiliki pengaruh terhadap fluktuasi harga tiket.
+Pada penelitian sebelumnya, prediksi harga tiket pesawat menggunakan Logistic Regression, Random Forest, dan Gradient Boosting menunjukkan bahwa Random Forest menghasilkan performa lebih baik dibanding dua model lainnya (Zebua et al., 2022). Berdasarkan hal tersebut, proyek ini mengimplementasikan tiga algoritma regresi K-Nearest Neighbors (KNN), Random Forest, dan Boosting Algorithm karena masing-masing memiliki keunggulan dalam menangani data.
+Evaluasi performa model dilakukan menggunakan metrik Mean Squared Error (MSE), dan proses tuning dilakukan dengan pendekatan GridSearchCV dan RandomizedSearchCV untuk mengoptimalkan hasil prediksi.
+Masalah ini harus diselesaikan karena ketidakakuratan prediksi harga tiket berdampak pada strategi bisnis perusahaan dan keputusan pembelian konsumen. Dengan model prediktif yang baik, perusahaan dapat mengoptimalkan penentuan harga dinamis, sementara konsumen dapat membuat keputusan pembelian yang lebih tepat waktu dan ekonomis.
 
 ## Business Understanding
 Harga tiket pesawat memiliki fluktuasi yang tinggi karena dipengaruhi oleh beberapa faktor seperti maskapai pesawat yang digunakan, lokasi penerbangan, lokasi tujuan, durasi penerbangan, waktu keberangkatan, waktu tiba, dan total transit. Ketidakmampuan perusahaan untuk memprediksi harga secara akurat dapat menghambat pengambilan keputusan strategis seperti penentuan harga. Oleh karena itu, diperlukan model prediktif yang mampu memperkirakan harga tiket pesawat secara tepat berdasarkan pola data historis.
@@ -185,7 +189,7 @@ Dari evaluasi yang telah dilakukan nilai mse yang terbaik yaitu pada model KNN d
 
 Pada perbandingan nilai prediksi antara ketiga model diperoleh nilai seperti di bawah ini:
 
-<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Aktual%20dan%20prediksi%20sebelum%20tuning.png" width="500"/>
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Aktual%20vs%20prediksi%20sebelum%20tuning.png" width="500"/>
 
 Prediksi KNN paling dekat dengan nilai aktual, yaitu nilai prediksinya 12504,6 dan nilai aktualnya 7438, namun perbedaan nilai prediksi dan nilai aktual masih sangat jauh, oleh karena itu dilakukan tuning untuk mendapatkan model yang lebih baik.
 
@@ -209,12 +213,18 @@ Berikut metrik evaluasi ketiga model
 
 Visualisasi grafik MSE setelah tuning:
 
-<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/MSE%20model%20setelah%20tuning.png" width="500"/>
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/mse%20setelah%20tuning%20baru.png" width="500"/>
+
+Dari evaluasi ketiga model setelah tuning Random Forest adalah model terbaik karena nilai MSE paling rendah diantara model yang lain
 
 Pada perbandingan nilai prediksi antara ketiga model setelah tuning diperoleh nilai seperti di bawah ini:
 
-<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Aktual%20dan%20prediksi%20setelah%20tuning.png" width="500"/>
+<img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Aktual%20vs%20prediksi%20setelah%20tuning.png" width="500"/>
 
-Prediksi Random Forest paling dekat dengan nilai aktual, dimana nilai prediksi random forest sebesar 6967,8 dan nilai aktualnya 7438
+Dari evaluasi ketiga model setelah tuning Random Forest adalah model terbaik karena nilai MSE paling rendah diantara model yang lain
 
-Dari evaluasi ketiga metode tersebut Random forest menjadi model terbaik yang dapat digunakan untuk memprediksi harga tiket pesawat. 
+Prediksi Boosting Algorithm paling dekat dengan nilai aktual, dimana nilai prediksi Boosting Algorithm sebesar 4981.5 dan nilai aktualnya 7438
+
+
+## Kesimpulan
+Meskipun pada prediksi yang terbaik adalah Boosting Algorithm namun Random Forest adalah model yang terbaik karena nilai MSE terkecil. Sebab lebih baik mengutamakan akurasi prediksi di tiap baris atau kestabilan dalam error individual dari pada perbandingan nilai prediksi dan nilai aktual. Model ini adalah yang cocok untuk memprediksi harga tiket pesawat.
