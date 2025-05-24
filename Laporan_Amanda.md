@@ -106,7 +106,7 @@ Untuk variabel-variabel numerical_featues dibuat matriks korelasi untuk mengetah
 ## Data Preparation
 Data preparation sangat penting dilakukan sebelum membuat pemodelan karena untuk mengetahui lebih mendalam mengenai seperti apa data yang digunakan untuk menganalisis suatu permasalahan dan memastikan tidak ada kesalahan sebelum pemodelan agar model yang dihasilkan nanti lebih akurat. Pada bagian Data Preparation ada beberapa tahapan yang dilakukan yaitu:
 
-A. Menghapus Duplikasi Data
+A. Menghapus Duplikasi Data <br>
    Setelah penghapusan data diperoleh sisa data sebanyak 9579 data.
 
 B. Filter Data<br>
@@ -171,11 +171,17 @@ Pada pemodelan ini nantinya akan dilakukan tuning untuk mendapat akurasi yang le
    Nilai MSE train sebesar 6529,342032 nilai ini menjadi yang terbesar diantara model lainnya sehingga model tidak terlalu presisi di data latih. Kemudian nilai test MSE sebesar 6123,370864 nilai ini juga sangat besar yang menunjukkan model tidak belajar dengan baik secara umum. Data ini jika menggunakan boosting algorith konfigurasinya underfit atau kurang optimal. 
 
 Berikut metrik evaluasi dari ketiga model:
+
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Metrik%20Evaluasi.png" width="500"/>
+
 Dan bentuk plot dari matrik evaluasi yaitu sebagai berikut:
+
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/evaluasi%20model.png" width="500"/>
+
 Pada perbandingan nilai prediksi antara ketiga model diperoleh nilai seperti di bawah ini:
+
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Aktual%20dan%20prediksi%20sebelum%20tuning.png" width="500"/>
+
 Prediksi KNN paling dekat dengan nilai aktual, yaitu nilai prediksinya 12504,6 dan nilai aktualnya 7438, namun perbedaan nilai prediksi dan nilai aktual masih sangat jauh, oleh karena itu dilakukan tuning untuk mendapatkan model yang lebih baik.
 
 Tuning:
@@ -191,10 +197,15 @@ Evaluasi setelah tuning:
 3. Boosting Algorithm
    Nilai train MSE sebesar 6422229.830446, nilai ini menjadi yang paling besar dari model lainnya artinya model tidk berhasil mempelajari data dengan baik. Kemudian nilai test MSE sebesar 5973400.421522 , nilai ini juga menjadi yang paling tinggi diantara model yang lain, nilai yang tinggi ini menunjukkan performa buruk pada data uji. Bisa jadi undefitting atau model tidak cocok dengan karakteristik data. Sehingga model boosting algorithm menjadi yang paling buruk dari model yang lain.
 Berikut metrik evaluasi ketiga model
+
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Metrik%20Evaluasi%20Setelah%20Tuning.png" width="500"/>
+
 Visualisasi grafik MSE setelah tuning:
+
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/MSE%20model%20setelah%20tuning.png" width="500"/>
+
 Pada perbandingan nilai prediksi antara ketiga model setelah tuning diperoleh nilai seperti di bawah ini:
+
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Aktual%20dan%20prediksi%20setelah%20tuning.png" width="500"/>
 
 Prediksi Random Forest paling dekat dengan nilai aktual, dimana nilai prediksi random forest sebesar 6967,8 dan nilai aktualnya 7438
