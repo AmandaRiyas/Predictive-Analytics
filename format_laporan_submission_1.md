@@ -5,20 +5,20 @@
 Tiket pesawat sering kali berubah ubah, seseorang mengecek tiket pesawat dengan pesawat yang sama namun dengan berbeda waktu landing sering kali menyebabkan perbedaan harga tiket pesawat padahal tujuannya sama. Perbedaan harga tiket pesawat ini membuat banyak orang merasa bingung mengenai kapan sebaiknya membeli tiket pesawat. Sebab banyak orang menginginkan bisa mendapat harga lebih murah tapi dengan kualitas dan pelayanan yang sama. Masalah ini bisa diselesaikan dengan suatu pemodelan salah satunnya pemodelan dalam machine learning seperti menggunakan model KNN, Random Forest, ataupun Boosting Algorithm, namun permasalahannya kita juga tidak tahu dimana model terbaik dari ketiga model tersebut.  Pada sebuah penelitian sebelumnya, prediksi harga tiket pesawat dengan menggunakan Logistic Regression, Random Forest, dan Gradient  Boosting diperoleh hasil Random  Forest lebih  baik  dari  model Logistic  Regression dan Gradient  Boosting(Zebua et al., 2022). Dan pada anlisis prediksi ini nanti akan mencoba menggunakan KNN, Random Forest, dan Boosting Algorithm untuk mengetahui model terbaik mana 
 
 ## Business Understanding
-
-Setiap orang selalu menginginkan suatu hal dengan harga yang murah namun dengan kualitas yang baik. Seperti ketika mereka membeli tiket pesawat, mereka akan mencoba menganalisis harga tiket peswat yang sesuai dengan keinginan mereka dengan mempertimbangkan berbagai aspek untuk mendapatkan pengalaman penerbangan yang baik. Seperti pada permasalahan tujuan dan maskapai yang digunakan meskipun sama namun ada kemungkinan harganya berbeda ketika jadwal keberangkatannya di waktu waktu tertentu. Hal ini menjadi suatu petimbangan maskapai dalam menentukan harga tiket pesawat agar profit yang diperoleh bisa semaksimal mungkin. Oleh karena itu, penting bagi perusahaan untuk mengetahui dan dapat memprediksi harga tiket pesawat di pasar. Prediksi akan digunakan untuk menentukan model terbaik yang dapat digunakan untuk memprediksi harga tiket pesawat.
+Harga tiket pesawat memiliki fluktuasi yang tinggi karena dipengaruhi oleh beberapa faktor seperti maskapai pesawat yang digunakan, lokasi penerbangan, lokasi tujuan, durasi penerbangan, waktu keberangkatan, waktu tiba, dan total transit. Ketidakmampuan perusahaan untuk memprediksi harga secara akurat dapat menghambat pengambilan keputusan strategis seperti penentuan harga. Oleh karena itu, diperlukan model prediktif yang mampu memperkirakan harga tiket pesawat secara tepat berdasarkan pola data historis.
 
 ### Problem Statements
-
-Model apa yang paling cocok digunakan untuk membuat analisis predikasi harga tiket pesawat?
+- Fluktuasi tinggi pada harga tiket pesawat menyulitkan perusahaan dalam menetapkan harga tiket pesawat karena ketidaktepatan dalam memprediksi harga dapat menghambat strategi harga dinamis.
+- Perusahaan membutuhkan model prediktif berbasis data historis yang dapat membantu memproyeksikan harga tiket pesawat secara akurat.
 
 ### Goals
-- Mendapat model yang tepat untuk memprediksi harga tiket pesawat
+- Mengembangkan model prediksi harga tiket pesawat berdasarkan data historis dan variabel variabel relevan seperti maskapai pesawat yang digunakan, lokasi penerbangan, lokasi tujuan, durasi penerbangan, waktu keberangkatan, waktu tiba, dan total transit.
+- Membandingkan performa beberapa algoritma machine learning regresi seperti K-Neares Neighbors (KNN), Random Forest, dan Boosting Algorithm untuk mendapat model dengan akurasi terbaik.
 
 ## Solution Statements
-- Mengunakan regresi dalam pemecahan masalah
-- Menerapkan beberapa pemodelan K-Nearest Neighbor, Random Forest, dan Boosting Algorithm untuk mencari tahu model terbaiknya
-- Menggunakan metrik evaluasi Mean Squared Error (MSE)
+- Menerapkan beberapa pemodelan K-Nearest Neighbor, Random Forest, dan Boosting Algorithm untuk mencari tahu model terbaiknya dengan menambahkan evaluasi performa menggunakan Mean Squared Error (MSE)
+- Melakuak hyperparameter tuning menggunakan GriSearchCV dan RandomizedSearchCV
+- Membandingkan performa dari model K-Nearest Neighbor, Random Forest, dan Boosting Algorithm.
 
 ## Data Understanding
 Data pada proyek ini berasal dari kaggle yang berjudul Flight Price Prediction dengan link https://www.kaggle.com/datasets/viveksharmar/flight-price-data 
@@ -45,16 +45,26 @@ Untuk memahami seperti apa data yang digunakan maka dilakukan data understanding
    Pada tahap ini dilakukan pengecekan jumlah data dan variabel. Terdapat 10683 data dengan 14 variabel yang memiliki tipe object dan integer. Variabel tersebut terdiri dari variabel Airline (object), Source (object), Destination (object), Total_Stops (int), Price (int), Date (int), Month (int), Year (int), Dep_hours(int), Dep_min (int), Arrival_hours (int), Arrival_min (int), Duration_hours (int), Duration_min (int). Kemudian cek apakah ada data kosong dan diperoleh tidak ada data yang kosong. Setelah itu dilakukan pengecekan data yang duplikat dan diperoleh ada 222 data duplikat. Terakhir cek missing value dan diperoleh terdapat missing value pada variabel duration_hours karena terdapat durasi penerbangan yang sangat lama hingga lebih dari 24 jam padahal ada aturan lama penerbangan hanya sampai 24 jam. Dan pada variabel Duration_Stop juga ada missing value karena ada pemberhentian yang lebih dari 2 kali padahal pemberhentian penerbangan hanya diperbolehkan maksimal 2 kali.
 
 2. Exploratory Data Analysis - Menangani Missing Value dan Outliers
-   Karena terdapat beberapa permasalahan pada data maka yang pertama dilakukan pengecaekan data pada duration_hours yang melebihi 24 jam dan dan menghapus penghapusan data yang isinya melebihi 24 jam. Kemudian dilakukan pengecekan pada variabel Total_Stop yang melebihi 2 kali pemberhentian dan diperoleh data yang terdapat 3 dan 4 kali pemberhentian padahal maksimal pemberhentian pesawat hanya 2 kali sehingga dilakukan penghapusan data pada data yang memiliki total pemberhentian lebih dari 2. Kemudian dilakukan pengecekan pada Duration_hours dan Duration_min untuk meyakinkan bahwa tidak ada data penerbangan pesawat yang isinya 0 semua. Setelah itu dilakukan pengecekan menggunakan boxplot agar terlihat jelas appakah terdapat outlier atau tidak pada price dan ditemukan ada beberapa outlier seperti di bawah ini:
+   Karena terdapat beberapa permasalahan pada data maka yang pertama dilakukan pengecekan data pada duration_hours yang melebihi 24 jam dan dan menghapus penghapusan data yang isinya melebihi 24 jam. Kemudian dilakukan pengecekan pada variabel Total_Stop yang melebihi 2 kali pemberhentian dan diperoleh data yang terdapat 3 dan 4 kali pemberhentian padahal maksimal pemberhentian pesawat hanya 2 kali sehingga dilakukan penghapusan data pada data yang memiliki total pemberhentian lebih dari 2. Kemudian dilakukan pengecekan pada Duration_hours dan Duration_min untuk meyakinkan bahwa tidak ada data penerbangan pesawat yang isinya 0 semua. Setelah itu dilakukan pengecekan menggunakan boxplot agar terlihat jelas appakah terdapat outlier atau tidak pada price dan ditemukan ada beberapa outlier seperti di bawah ini:
+   
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/boxplot%20dengan%20outlier.png" width="500"/>
-Dan dilakukan penanganan menggunakan IQR sehingga diperoleh data yang lebih bersih dengan visualisasi seperti di bawah ini:
+
+Banyaknya outlier pada boxplot ini kemungkinan dikarenakan harga tiket pesawat yang tidak wajar oleh karena itu dilakukan penanganan dengan menghapus outlier menggunakan IQR sehingga diperoleh data yang lebih bersih dengan visualisasi seperti di bawah ini:
+
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/boxplot%20setelah%20pembersihan%20outlier.png" width="500"/>
 
-3. Exploratory Data Analysis - Univariate Analysis
+Setelah dilakukan penghapusan outlier, terdapat masih ada 2 outlier yang sangat dekat dengan batas IQR, nilai ini sudah tidak perlu dihapus karena tidak terlalu berpengaruh untuk penganalisan selanjutnya sebab posisinya sudah sangat dekat dengan IQR.
+
+4. Exploratory Data Analysis - Univariate Analysis
    Mengelompokkan categorical_features yang terdiri dari variabel (Airline, Source, Destination) dan numerical_featues yang terdiri dari variabel (Total_Stops, Date, Month, Year, Dep_hours, Dep_min, Arrival_hours, Arrival_min, Duration_hours, Duration_min) dengan target Price untuk mempermudah dalam penganalisisan data nantinya. Kemudian dibuat visualisasi data berupa diagram batang dari categirical_features seprti gambar di bawah ini untuk melihat seperti apa data yang ada:
+
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/Diagram%20categorical%20Airline.png" width="500"/>
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/diagram%20categorical%20source.png" width="500"/>
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/diagram%20categorical%20Destination.png" width="500"/>
+
+- Pada diagram batang distribusi `Airline` terhadap jumlah, maskapai dengan jumlah tertinggi yaitu Jet Airways dengan jumlah sebanyak 3377 dan yang terendah adalah maskapai Trujet dengan jumlah 1.
+- Pada diagram batang distribusi `Source`terhadap jumlah, tempat keberangkatan tertinggi yaitu di Delhi dengan jumlah 4059 dan yang terendah di Chennai dengan jumlah 381
+- Pada diagram batang distribusi `Destination`terhadap jumlah, tujuan destinasi tertinggi yaitu Cochin dengan jumlah 4059 dan yang terendah di Kolkata dengan jumlah 381.
 
 Kemudian untuk numerical_featues dibuat diagram batang seperti di bawah ini:
 <img src="https://raw.githubusercontent.com/AmandaRiyas/Predictive-Analytics/refs/heads/main/images/diagram%20batang%20numerical%20features.png" width="500"/>
